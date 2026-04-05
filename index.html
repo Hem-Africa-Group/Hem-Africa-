@@ -18,14 +18,71 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background: #ffffff; color: #1a1a1b; line-height: 1.6; overflow-x: hidden; }
 
-        /* Global Loader */
+        /* --- MIGRATION POPUP STYLES --- */
+        .migration-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 31, 92, 0.95); /* Using your --deep color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000; /* Above the loader */
+            backdrop-filter: blur(10px);
+        }
+
+        .migration-card {
+            background: white;
+            padding: 50px;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            border-top: 5px solid var(--accent);
+        }
+
+        .migration-card h2 {
+            color: var(--deep);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .migration-card p {
+            color: #5f6368;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .migration-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .migration-btn:hover {
+            background: var(--deep);
+        }
+
+        /* --- REST OF YOUR ORIGINAL STYLES --- */
         #global-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease; }
         .loader-content h1 { letter-spacing: 5px; font-size: 1rem; color: var(--deep); font-weight: 800; }
         .loader-bar { width: 100px; height: 2px; background: #eee; margin-top: 15px; position: relative; overflow: hidden; }
         .loader-bar::after { content: ''; position: absolute; left: -100%; width: 100%; height: 100%; background: var(--accent); animation: load 1.2s infinite; }
         @keyframes load { 100% { left: 100%; } }
 
-        /* Nav */
         .nav { position: sticky; top: 0; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; padding: 1rem 2rem; align-items: center; }
         .logo { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; text-decoration: none; color: #000; letter-spacing: 1px; }
@@ -33,23 +90,17 @@
         .nav-links a { text-decoration: none; color: #1a1a1b; font-size: 0.75rem; font-weight: 700; margin-left: 2rem; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* Ticker */
         .ticker-wrap { background: var(--deep); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .ticker { display: inline-block; animation: ticker 50s linear infinite; font-weight: 800; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* Hero */
         .hero { background: radial-gradient(circle at 70% 30%, #f0f4ff, #ffffff); padding: 160px 2rem; text-align: center; border-bottom: 1px solid var(--border); }
         .hero h1 { font-size: 5rem; font-weight: 800; color: var(--deep); line-height: 1; margin-bottom: 25px; letter-spacing: -2px; }
         .hero p { max-width: 800px; margin: 0 auto 40px; color: #5f6368; font-size: 1.3rem; font-weight: 400; }
 
-        /* Section Layouts */
         .section { max-width: 1400px; margin: 0 auto; padding: 100px 2rem; }
         .section-header { margin-bottom: 60px; }
         .section-header h2 { font-size: 2.5rem; color: var(--deep); letter-spacing: -1px; }
-        .section-header p { color: #5f6368; font-size: 1.1rem; }
-
-        /* Grid Logic */
         .grid-primary { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
         .data-card { background: #fff; padding: 50px; transition: 0.4s; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
         .data-card:hover { background: #fbfcfe; transform: scale(1.01); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
@@ -58,27 +109,33 @@
         
         .badge { background: var(--accent); color: white; padding: 4px 8px; font-size: 0.6rem; border-radius: 2px; margin-left: 10px; vertical-align: middle; }
 
-        /* Infrastructure Section (Special) */
         .infra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: var(--deep); color: white; padding: 80px; border-radius: 4px; }
         .infra-tag { background: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
 
-        /* Stat Section */
         .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; margin-top: 50px; }
         .stat-item h4 { font-size: 2.5rem; color: var(--accent); font-weight: 800; }
         .stat-item p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
 
-        /* Buttons */
         .btn-corp { background: var(--accent); color: white; padding: 20px 40px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; transition: 0.3s; text-decoration: none; display: inline-block; font-size: 0.8rem; }
         .btn-corp:hover { background: var(--deep); transform: translateY(-2px); }
 
-        /* Footer */
         .footer { background: #f8fafc; padding: 100px 2rem 40px; border-top: 1px solid var(--border); }
         .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; }
         .footer h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: var(--deep); }
         .footer-links a { display: block; text-decoration: none; color: #5f6368; font-size: 0.85rem; margin-bottom: 15px; transition: 0.2s; }
         .footer-links a:hover { color: var(--accent); }
 
-        @media (max-width: 968px) {
+        .ceo-section { background: #fcfdfe; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+        .ceo-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; max-width: 1400px; margin: 0 auto; padding: 120px 2rem; }
+        .ceo-quote-mark { font-size: 10rem; color: var(--accent); opacity: 0.08; line-height: 0; margin-bottom: -30px; font-family: serif; user-select: none; }
+        .ceo-text p { font-size: 1.15rem; color: #334155; margin-bottom: 28px; font-weight: 400; max-width: 750px; letter-spacing: -0.01em; }
+        .ceo-signature { margin-top: 40px; border-top: 1px solid var(--border); display: inline-block; padding-top: 25px; }
+        .ceo-name { font-weight: 800; font-size: 1.3rem; color: var(--deep); margin-bottom: 4px; letter-spacing: -0.5px; }
+        .ceo-title { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+        .ceo-highlight { color: var(--deep); font-weight: 700; }
+
+        @media (max-width: 1024px) {
+            .ceo-container { grid-template-columns: 1fr; gap: 50px; padding: 80px 2rem; }
             .hero h1 { font-size: 3rem; }
             .infra-grid { grid-template-columns: 1fr; }
             .stat-row { grid-template-columns: 1fr 1fr; }
@@ -86,6 +143,15 @@
     </style>
 </head>
 <body>
+
+    <!-- --- MIGRATION NOTIFICATION --- -->
+    <div id="migration-popup" class="migration-overlay">
+        <div class="migration-card">
+            <h2>System Migration</h2>
+            <p>H.E.M. Africa Group is currently migrating its global infrastructure to <strong>AWS Cloud Systems</strong>. You may experience temporary interface updates as we finalize the deployment.</p>
+            <button onclick="closeMigration()" class="migration-btn">Acknowledge & Enter</button>
+        </div>
+    </div>
 
     <div id="global-loader"><div class="loader-content"><h1>H.E.M. AFRICA</h1><div class="loader-bar"></div></div></div>
 
@@ -163,71 +229,6 @@
             </div>
         </div>
     </section>
-    <style>
-        .ceo-section { 
-            background: #fcfdfe; 
-            border-top: 1px solid var(--border); 
-            border-bottom: 1px solid var(--border); 
-            position: relative;
-            overflow: hidden;
-        }
-        .ceo-container { 
-            display: grid; 
-            grid-template-columns: 1fr 1.5fr; 
-            gap: 80px; 
-            align-items: start; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 120px 2rem; 
-        }
-        .ceo-quote-mark { 
-            font-size: 10rem; 
-            color: var(--accent); 
-            opacity: 0.08; 
-            line-height: 0; 
-            margin-bottom: -30px; 
-            font-family: serif; 
-            user-select: none;
-        }
-        .ceo-text p { 
-            font-size: 1.15rem; 
-            color: #334155; 
-            margin-bottom: 28px; 
-            font-weight: 400; 
-            max-width: 750px; 
-            letter-spacing: -0.01em;
-        }
-        .ceo-signature { 
-            margin-top: 40px; 
-            border-top: 1px solid var(--border); 
-            display: inline-block; 
-            padding-top: 25px;
-        }
-        .ceo-name { 
-            font-weight: 800; 
-            font-size: 1.3rem; 
-            color: var(--deep); 
-            margin-bottom: 4px; 
-            letter-spacing: -0.5px;
-        }
-        .ceo-title { 
-            font-size: 0.7rem; 
-            color: var(--text-muted); 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-weight: 700; 
-            margin-bottom: 4px;
-        }
-        .ceo-highlight {
-            color: var(--deep);
-            font-weight: 700;
-        }
-
-        @media (max-width: 1024px) {
-            .ceo-container { grid-template-columns: 1fr; gap: 50px; padding: 80px 2rem; }
-            .ceo-quote-mark { font-size: 7rem; }
-        }
-    </style>
 
     <section class="ceo-section" id="ceo-note">
         <div class="ceo-container">
@@ -276,30 +277,6 @@
         </div>
     </section>
 
-    <section class="section" id="mission">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-            <div>
-                <span class="card-label">Our Philosophy</span>
-                <h2 style="font-size: 3rem; color: var(--deep); line-height: 1.1; margin-bottom: 20px;">Relentless Execution.<br>Premium Quality.</h2>
-                <p style="color: #5f6368; margin-bottom: 30px;">H.E.M. stands for <strong>Hustle Excellence Movement</strong>. We believe in high-standard innovation that combines community with world-class engineering.</p>
-                <a href="board.html" class="btn-corp">Meet the Leadership</a>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div style="background: #f0f4ff; padding: 40px; text-align: center;">
-                    <h3 style="font-size: 2rem; color: var(--accent);">H</h3>
-                    <p style="font-weight: 800; font-size: 0.6rem; text-transform: uppercase;">Hustle</p>
-                </div>
-                <div style="background: #eef2ff; padding: 40px; text-align: center;">
-                    <h3 style="font-size: 2rem; color: var(--accent);">E</h3>
-                    <p style="font-weight: 800; font-size: 0.6rem; text-transform: uppercase;">Excellence</p>
-                </div>
-                <div style="background: #e0e7ff; padding: 40px; text-align: center; grid-column: span 2;">
-                    <h3 style="font-size: 2rem; color: var(--accent);">M</h3>
-                    <p style="font-weight: 800; font-size: 0.6rem; text-transform: uppercase;">Movement</p>
-                </div>
-            </div>
-        </div>
-
     <footer class="footer">
         <div class="footer-grid">
             <div>
@@ -311,20 +288,18 @@
                 <a href="#">Pinglo Social</a>
                 <a href="#">Cinexa Web</a>
                 <a href="#">Ontrixa AI</a>
-                <a href="core.html">HEM Core</a>
             </div>
             <div class="footer-links">
                 <h4>Corporate</h4>
                 <a href="board.html">The Board</a>
                 <a href="jobs.html">Careers</a>
                 <a href="press.html">Newsroom</a>
-                <a href="investment.html">Investment</a>
             </div>
             <div class="footer-links">
                 <h4>Legal</h4>
-                <a href="terms.html">Terms of Service</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="status.html">Infrastructure Status</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="status.html">Infrastructure</a>
             </div>
         </div>
         <div style="max-width: 1400px; margin: 80px auto 0; border-top: 1px solid var(--border); padding-top: 40px; font-size: 0.75rem; color: #94a3b8; display: flex; justify-content: space-between;">
@@ -334,12 +309,18 @@
     </footer>
 
     <script>
+        // Loader Logic
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('global-loader').style.opacity = '0';
                 setTimeout(() => { document.getElementById('global-loader').style.display = 'none'; }, 500);
             }, 800);
         });
+
+        // Migration Popup Logic
+        function closeMigration() {
+            document.getElementById('migration-popup').style.display = 'none';
+        }
     </script>
 </body>
 </html>
