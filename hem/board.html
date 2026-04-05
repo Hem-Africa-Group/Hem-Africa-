@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership | HEM Africa Group</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --accent: #003399; 
+            --deep: #001f5c;
+            --bg-dark: #050b14; 
+            --border: #e1e8f0;
+            --text-muted: #94a3b8;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: #ffffff; color: #1a1a1b; line-height: 1.6; overflow-x: hidden; }
+
+        /* Global Loader */
+        #global-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease; }
+        .loader-content h1 { letter-spacing: 5px; font-size: 1rem; color: var(--deep); font-weight: 800; }
+        .loader-bar { width: 100px; height: 2px; background: #eee; margin-top: 15px; position: relative; overflow: hidden; }
+        .loader-bar::after { content: ''; position: absolute; left: -100%; width: 100%; height: 100%; background: var(--accent); animation: load 1.2s infinite; }
+        @keyframes load { 100% { left: 100%; } }
+
+        /* Nav */
+        .nav { position: sticky; top: 0; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; padding: 1.2rem 2rem; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; text-decoration: none; color: #000; }
+        .logo span { color: var(--accent); font-weight: 300; margin-left: 5px; }
+        .nav-links a { text-decoration: none; color: #1a1a1b; font-size: 0.8rem; font-weight: 700; margin-left: 2rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Header Section */
+        .page-header { background: radial-gradient(circle at top right, #f0f4ff, #fff); padding: 100px 2rem 60px; border-bottom: 1px solid var(--border); }
+        .header-content { max-width: 1200px; margin: 0 auto; }
+        .card-label { font-size: 0.7rem; font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 2px; }
+
+        /* Board Grid */
+        .section { max-width: 1200px; margin: 0 auto; padding: 80px 2rem; }
+        .board-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        
+        .member-card { background: #fff; border: 1px solid var(--border); transition: 0.4s; position: relative; padding: 40px 30px; text-align: center;}
+        .member-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        
+        /* Initial-based Avatars */
+        .member-avatar { 
+            width: 80px; 
+            height: 80px; 
+            background: linear-gradient(135deg, var(--deep), var(--accent)); 
+            color: white; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 20px rgba(0, 51, 153, 0.2);
+        }
+        
+        .member-info h3 { font-size: 1.1rem; color: var(--deep); font-weight: 800; margin-bottom: 5px; text-transform: uppercase; }
+        .member-role { font-size: 0.65rem; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 15px; }
+        .member-bio { font-size: 0.85rem; color: #5f6368; line-height: 1.6; }
+
+        /* Footer */
+        .footer { background: #f8fafc; padding: 80px 2rem; border-top: 1px solid var(--border); margin-top: 100px; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    </style>
+</head>
+<body>
+
+    <div id="global-loader"><div class="loader-content"><h1>HEM AFRICA</h1><div class="loader-bar"></div></div></div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">HEM AFRICA<span>GROUP</span></a>
+            <div class="nav-links">
+                <a href="services.html">Ecosystem</a>
+                <a href="press.html">Newsroom</a>
+                <a href="board.html" style="color: var(--accent);">Leadership</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="header-content">
+            <span class="card-label">Governance & Vision</span>
+            <h1 style="font-size: 3.5rem; color: var(--deep); font-weight: 800; line-height: 1.1;">The Executive Council</h1>
+            <p style="color: #5f6368; max-width: 650px; font-size: 1.1rem; margin-top: 20px;">
+                Driving technological sovereignty through institutional leadership and specialized expertise across our digital ecosystem.
+            </p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="board-grid">
+            <div class="member-card">
+                <div class="member-avatar">HM</div>
+                <div class="member-info">
+                    <span class="member-role">Chief Executive Officer</span>
+                    <h3>Haneef Mohammed</h3>
+                    <p class="member-bio">Leading the strategic expansion of HEM Africa Group's diversified portfolio across global markets.</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">AE</div>
+                <div class="member-info">
+                    <span class="member-role">Chief of Operations</span>
+                    <h3>Ahmad Edun</h3>
+                    <p class="member-bio">Directing institutional logistics and operational efficiency for the Group's multi-sector assets.</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">HZ</div>
+                <div class="member-info">
+                    <span class="member-role">President of Cinexa</span>
+                    <h3>Hassan Zakari Abdulkadir</h3>
+                    <p class="member-bio">Leading the high-standard entertainment and metadata streaming infrastructure at Cinexa.</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">FO</div>
+                <div class="member-info">
+                    <span class="member-role">President of Pinglo</span>
+                    <h3>Faizul Oyewole</h3>
+                    <p class="member-bio">Spearheading the development and user-adoption strategy for the Pinglo communication ecosystem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h2 style="font-weight: 900; margin-bottom: 15px;">HEM <span style="color: var(--accent);">AFRICA</span></h2>
+                <p style="color: #5f6368; font-size: 0.9rem;">The high-standard parental company for diversified digital infrastructure.</p>
+            </div>
+        </div>
+        <div style="max-width: 1200px; margin: 60px auto 0; border-top: 1px solid var(--border); padding-top: 30px; font-size: 0.8rem; color: #94a3b8;">
+            © 2026 H.E.M. Africa Group. Nigeria • United States. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('global-loader').style.opacity = '0';
+                setTimeout(() => { document.getElementById('global-loader').style.display = 'none'; }, 500);
+            }, 800);
+        });
+    </script>
+</body>
+</html>

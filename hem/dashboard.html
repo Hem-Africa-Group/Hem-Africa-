@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.E.M. CORE | Global Enterprise OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --primary: #0052FF; --accent: #00d2ff; --bg: #020617;
+            --glass: rgba(15, 23, 42, 0.6); --border: rgba(255, 255, 255, 0.1);
+            --text: #f8fafc; --dim: #94a3b8; --success: #10b981; --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+
+        /* --- NAVIGATION --- */
+        .sidebar { 
+            width: 300px; background: rgba(2, 6, 23, 0.98); backdrop-filter: blur(50px);
+            border-right: 1px solid var(--border); padding: 30px 20px; display: flex; flex-direction: column; overflow-y: auto;
+        }
+        .brand { font-weight: 800; font-size: 1.2rem; letter-spacing: 4px; margin-bottom: 40px; }
+        .brand span { color: var(--primary); }
+        .nav-section { margin-bottom: 25px; }
+        .nav-label { font-size: 0.6rem; font-weight: 800; color: var(--dim); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; display: block; opacity: 0.6; }
+        .nav-link { 
+            padding: 10px 14px; color: var(--dim); text-decoration: none; font-size: 0.75rem; 
+            font-weight: 600; margin-bottom: 2px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: 0.2s;
+        }
+        .nav-link:hover, .nav-link.active { background: rgba(255, 255, 255, 0.05); color: white; }
+        .nav-link.active { border-left: 3px solid var(--primary); background: rgba(0, 82, 255, 0.1); }
+        .tag-cs { font-size: 0.5rem; background: var(--warning); color: black; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
+
+        /* --- VIEWPORT --- */
+        .viewport { flex: 1; overflow-y: auto; padding: 50px; background: radial-gradient(at 0% 0%, #0f172a, #020617); }
+        .module { display: none; animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .module.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- COMPONENTS --- */
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; }
+        .card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 24px; position: relative; }
+        .card-full { grid-column: span 4; }
+        .card-half { grid-column: span 2; }
+        .btn { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(0, 82, 255, 0.4); }
+
+        /* RBAC LOCK */
+        .locked-bod::after {
+            content: "BOARD OF DIRECTORS ACCESS ONLY";
+            position: absolute; inset: 0; background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center;
+            border-radius: 20px; color: var(--warning); font-size: 0.7rem; font-weight: 800; z-index: 20;
+        }
+
+        input, select { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 12px; color: white; border-radius: 10px; margin-top: 5px; margin-bottom: 15px; }
+        #toast { position: fixed; top: 30px; left: 50%; transform: translateX(-50%); background: var(--primary); padding: 12px 30px; border-radius: 50px; font-weight: 700; z-index: 1000; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .list-item { padding: 10px; border-bottom: 1px solid var(--border); font-size: 0.8rem; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+
+    <div id="toast">Protocol Synchronized</div>
+
+    <aside class="sidebar">
+        <div class="brand">H.E.M. <span>CORE</span></div>
+        
+        <div class="nav-section">
+            <span class="nav-label">Executive Suite</span>
+            <div class="nav-link active" onclick="route('overview', this)">HQ Overview</div>
+            <div class="nav-link" onclick="route('staff', this)">Staff Registry</div>
+            <div class="nav-link" onclick="route('meeting', this)">Virtual Meeting <span class="tag-cs">CS</span></div>
+        </div>
+
+        <div class="nav-section">
+            <span class="nav-label">AI & Infrastructure</span>
+            <div class="nav-link" onclick="route('ontrixa', this)">Ontrixa Neural Lab</div>
+            <div class="nav-link" onclick="route('users', this)">User Management</div>
+        </div>
+
+        <div class="nav-section">
+            <span class="nav-label">Media & Content</span>
+            <div class="nav-link" onclick="route('hmn', this)">HMN Newsroom</div>
+            <div class="nav-link" onclick="route('pinglo', this)">Pinglo Analytics</div>
+        </div>
+
+        <div class="nav-section" style="margin-top:auto">
+            <p style="font-size: 0.6rem; color: var(--dim);">Build: 2026.04.03-STABLE</p>
+        </div>
+    </aside>
+
+    <main class="viewport">
+        
+        <!-- MODULE: OVERVIEW -->
+        <section id="overview" class="module active">
+            <h1>HQ Command Center</h1>
+            <div class="grid">
+                <div class="card"><p class="nav-label">Staff Count</p><h2 id="c-staff">--</h2></div>
+                <div class="card"><p class="nav-label">Ecosystem Users</p><h2 id="c-users">--</h2></div>
+                <div class="card"><p class="nav-label">Live Stories</p><h2 id="c-stories">--</h2></div>
+                <div class="card"><p class="nav-label">Region</p><h2 style="color:var(--success)">Lagos, NG</h2></div>
+            </div>
+        </section>
+
+        <!-- MODULE: STAFF -->
+        <section id="staff" class="module">
+            <h1>Staff Registry</h1>
+            <div class="grid">
+                <div class="card card-half">
+                    <h3>Register Employee</h3>
+                    <form id="regForm" style="margin-top:15px">
+                        <input type="text" id="rn" placeholder="Full Name" required>
+                        <input type="email" id="re" placeholder="email@hemafrica.com" required>
+                        <select id="rr"><option>Executive</option><option>Developer</option><option>Media</option></select>
+                        <button class="btn">Commit to Ledger</button>
+                    </form>
+                </div>
+                <div class="card card-half">
+                    <h3>Active Roster</h3>
+                    <div id="staffList" style="margin-top:10px"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE: USER MANAGEMENT (BOD ONLY) -->
+        <section id="users" class="module">
+            <h1>User Control Plane</h1>
+            <div class="grid">
+                <div id="bod-lock" class="card card-half">
+                    <h3>Update User Plan</h3>
+                    <form id="userForm" style="margin-top:15px">
+                        <input type="email" id="ue" placeholder="User Email" required>
+                        <select id="up"><option>Standard</option><option>Premium</option><option>Institutional</option></select>
+                        <button class="btn">Update Authorization</button>
+                    </form>
+                </div>
+                <div class="card card-half">
+                    <h3>User Database</h3>
+                    <div id="userList" style="margin-top:10px"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE: HMN NEWSROOM -->
+        <section id="hmn" class="module">
+            <h1>HMN Newsroom</h1>
+            <div class="grid">
+                <div class="card card-full">
+                    <h3>Publish Global Story</h3>
+                    <form id="newsForm" style="display:flex; gap:15px; margin-top:15px">
+                        <input type="text" id="nt" placeholder="Headline" required style="flex:2">
+                        <button class="btn" style="flex:1">Broadcast Story</button>
+                    </form>
+                </div>
+                <div class="card card-full">
+                    <div id="newsFeed"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE: PINGLO -->
+        <section id="pinglo" class="module">
+            <h1>Pinglo Analytics</h1>
+            <div class="grid">
+                <div class="card card-half">
+                    <p class="nav-label">Traffic Ingress</p>
+                    <h2 style="color:var(--accent)">42.8k <span style="font-size:0.8rem">Hits/hr</span></h2>
+                </div>
+                <div class="card card-half">
+                    <p class="nav-label">Server Load</p>
+                    <h2 style="color:var(--success)">14%</h2>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs, addDoc, query, where, updateDoc, doc, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyACO46sTJQffwsQJfFN9cqYa_oDKG14AfQ",
+            authDomain: "hem-platform.firebaseapp.com",
+            projectId: "hem-platform",
+            storageBucket: "hem-platform.firebasestorage.app",
+            messagingSenderId: "846707696620",
+            appId: "1:846707696620:web:59676e4223dcbe6c9816c9"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // RBAC: Current User Check
+        const currentUser = "haneef@hemafrica.com";
+        const isBOD = ["haneef@hemafrica.com", "faizul@hemafrica.com"].includes(currentUser);
+
+        window.route = (id, el) => {
+            document.querySelectorAll('.module').forEach(m => m.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if(el) el.classList.add('active');
+            sync();
+        };
+
+        async function sync() {
+            const s = await getDocs(collection(db, "hem_staff"));
+            const u = await getDocs(collection(db, "hem_media_users"));
+            const n = await getDocs(collection(db, "stories"));
+
+            document.getElementById('c-staff').innerText = s.size;
+            document.getElementById('c-users').innerText = u.size;
+            document.getElementById('c-stories').innerText = n.size;
+
+            // Render Staff
+            const sl = document.getElementById('staffList'); sl.innerHTML = "";
+            s.forEach(d => sl.innerHTML += `<div class="list-item"><span>${d.data().name}</span><span style="color:var(--primary)">${d.data().role}</span></div>`);
+
+            // Render Users
+            const ul = document.getElementById('userList'); ul.innerHTML = "";
+            u.forEach(d => ul.innerHTML += `<div class="list-item"><span>${d.data().email}</span><span style="color:var(--success)">${d.data().plan || 'Standard'}</span></div>`);
+
+            // Render News
+            const nf = document.getElementById('newsFeed'); nf.innerHTML = "";
+            n.forEach(d => nf.innerHTML += `<div class="list-item"><span>${d.data().title}</span><span style="color:var(--dim)">Live</span></div>`);
+
+            // RBAC Check
+            if(!isBOD) document.getElementById('bod-lock').classList.add('locked-bod');
+        }
+
+        // Action: Register Staff
+        document.getElementById('regForm').onsubmit = async (e) => {
+            e.preventDefault();
+            await addDoc(collection(db, "hem_staff"), { name: document.getElementById('rn').value, email: document.getElementById('re').value, role: document.getElementById('rr').value });
+            toast("Staff Ledger Updated"); e.target.reset(); sync();
+        };
+
+        // Action: Broadcast News
+        document.getElementById('newsForm').onsubmit = async (e) => {
+            e.preventDefault();
+            await addDoc(collection(db, "stories"), { title: document.getElementById('nt').value, timestamp: new Date() });
+            toast("Global Broadcast Sent"); e.target.reset(); sync();
+        };
+
+        // Action: Update User (BOD Only)
+        document.getElementById('userForm').onsubmit = async (e) => {
+            e.preventDefault();
+            if(!isBOD) return toast("Access Denied");
+            const email = document.getElementById('ue').value;
+            const q = query(collection(db, "hem_media_users"), where("email", "==", email));
+            const snap = await getDocs(q);
+            if(!snap.empty) {
+                await updateDoc(doc(db, "hem_media_users", snap.docs[0].id), { plan: document.getElementById('up').value });
+                toast("Permissions Updated"); sync();
+            } else { toast("User not found"); }
+        };
+
+        function toast(m) {
+            const t = document.getElementById('toast'); t.innerText = m; t.style.display = "block";
+            setTimeout(() => t.style.display = "none", 3000);
+        }
+
+        window.onload = sync;
+    </script>
+</body>
+</html>

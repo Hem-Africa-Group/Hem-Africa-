@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H.E.M. | Secure Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;800&display=swap" rel="stylesheet">
+    <style>
+        body { background: #020617; color: white; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .login-card { background: rgba(15, 23, 42, 0.8); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); width: 350px; text-align: center; backdrop-filter: blur(20px); }
+        input { width: 100%; background: #0f172a; border: 1px solid #334155; padding: 12px; border-radius: 10px; color: white; margin-bottom: 15px; outline: none; box-sizing: border-box; }
+        input:focus { border-color: #0052FF; }
+        .btn { width: 100%; background: #0052FF; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+        .btn:hover { background: #0040cc; transform: translateY(-2px); }
+        .error { color: #ef4444; font-size: 0.8rem; margin-bottom: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h2 style="letter-spacing: 4px;">H.E.M. CORE</h2>
+        <p style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 30px;">ENTERPRISE AUTHENTICATION</p>
+        
+        <div id="err-msg" class="error">Invalid Credentials</div>
+        
+        <input type="email" id="email" placeholder="Corporate Email">
+        <input type="password" id="pass" placeholder="Secure Password">
+        <button class="btn" id="login-btn">INITIALIZE</button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyACO46sTJQffwsQJfFN9cqYa_oDKG14AfQ",
+            authDomain: "hem-platform.firebaseapp.com",
+            projectId: "hem-platform",
+            storageBucket: "hem-platform.firebasestorage.app",
+            messagingSenderId: "846707696620",
+            appId: "1:846707696620:web:59676e4223dcbe6c9816c9"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.getElementById('login-btn').addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('pass').value;
+            const err = document.getElementById('err-msg');
+
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+                // Redirect to the main OS page upon success
+                window.location.href = "../index.html"; 
+            } catch (e) {
+                err.style.display = 'block';
+                err.innerText = "ACCESS DENIED: UNRECOGNIZED IDENTITY";
+            }
+        });
+    </script>
+</body>
+</html>

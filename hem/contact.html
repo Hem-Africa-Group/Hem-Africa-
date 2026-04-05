@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | H.E.M. Africa</title>
+    <style>
+        :root { --primary: #003399; --deep: #001f5c; --bg: #ffffff; --border: #e1e8f0; --muted: #5f6368; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); }
+        .nav { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+        .container { max-width: 1100px; margin: 80px auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+        .info h1 { font-size: 3rem; color: var(--deep); margin-bottom: 20px; }
+        .contact-method { margin-bottom: 40px; }
+        .label { font-weight: 800; color: var(--primary); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .value { font-size: 1.1rem; font-weight: 500; text-decoration: none; color: inherit; }
+        .btn-wa { display: inline-block; padding: 15px 30px; background: #25D366; color: white; text-decoration: none; font-weight: 700; border-radius: 4px; margin-top: 20px; }
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 4px; background: var(--light-bg); }
+    </style>
+</head>
+<body>
+    <nav class="nav"><div style="max-width: 1100px; margin: 0 auto; padding: 0 2rem;"><a href="#" style="font-weight: 900; text-decoration: none; color: #000;">H.E.M. <span style="color: var(--primary);">AFRICA</span></a></div></nav>
+    <div class="container">
+        <div class="info">
+            <h1>Get in touch.</h1>
+            <p style="color: var(--muted); margin-bottom: 40px;">Connect with our corporate headquarters or technical support teams.</p>
+            <div class="contact-method">
+                <span class="label">General Inquiries</span>
+                <a href="mailto:info@hemafrica.com" class="value">info@hemafrica.com</a>
+            </div>
+            <div class="contact-method">
+                <span class="label">Talent & Careers</span>
+                <a href="mailto:careers@hemafrica.com" class="value">careers@hemafrica.com</a>
+            </div>
+            <a href="https://wa.me/2349046199743" class="btn-wa">WhatsApp Support</a>
+        </div>
+        <div class="form-box">
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email Address">
+            <textarea rows="5" placeholder="How can we help?"></textarea>
+            <button style="width: 100%; padding: 15px; background: var(--primary); color: #fff; border: none; font-weight: 700; cursor: pointer;">SEND MESSAGE</button>
+        </div>
+    </div>
+</body>
+</html>

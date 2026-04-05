@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEM Africa Group | Institutional Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --accent: #003399; 
+            --deep: #001f5c;
+            --bg-dark: #050b14; 
+            --border: #e1e8f0;
+            --text-muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: #ffffff; color: #1a1a1b; line-height: 1.6; overflow-x: hidden; }
+
+        /* Global Loader */
+        #global-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease; }
+        .loader-content h1 { letter-spacing: 5px; font-size: 1rem; color: var(--deep); font-weight: 800; }
+        .loader-bar { width: 100px; height: 2px; background: #eee; margin-top: 15px; position: relative; overflow: hidden; }
+        .loader-bar::after { content: ''; position: absolute; left: -100%; width: 100%; height: 100%; background: var(--accent); animation: load 1.2s infinite; }
+        @keyframes load { 100% { left: 100%; } }
+
+        /* Nav */
+        .nav { position: sticky; top: 0; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; padding: 1rem 2rem; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; text-decoration: none; color: #000; letter-spacing: 1px; }
+        .logo span { color: var(--accent); font-weight: 300; margin-left: 5px; }
+        .nav-links a { text-decoration: none; color: #1a1a1b; font-size: 0.75rem; font-weight: 700; margin-left: 2rem; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Ticker */
+        .ticker-wrap { background: var(--deep); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .ticker { display: inline-block; animation: ticker 50s linear infinite; font-weight: 800; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* Hero */
+        .hero { background: radial-gradient(circle at 70% 30%, #f0f4ff, #ffffff); padding: 160px 2rem; text-align: center; border-bottom: 1px solid var(--border); }
+        .hero h1 { font-size: 5rem; font-weight: 800; color: var(--deep); line-height: 1; margin-bottom: 25px; letter-spacing: -2px; }
+        .hero p { max-width: 800px; margin: 0 auto 40px; color: #5f6368; font-size: 1.3rem; font-weight: 400; }
+
+        /* Section Layouts */
+        .section { max-width: 1400px; margin: 0 auto; padding: 100px 2rem; }
+        .section-header { margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--deep); letter-spacing: -1px; }
+        .section-header p { color: #5f6368; font-size: 1.1rem; }
+
+        /* Grid Logic */
+        .grid-primary { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+        .data-card { background: #fff; padding: 50px; transition: 0.4s; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
+        .data-card:hover { background: #fbfcfe; transform: scale(1.01); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card-label { font-size: 0.65rem; font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; display: block; letter-spacing: 2px; }
+        .data-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--deep); }
+        
+        .badge { background: var(--accent); color: white; padding: 4px 8px; font-size: 0.6rem; border-radius: 2px; margin-left: 10px; vertical-align: middle; }
+
+        /* Infrastructure Section (Special) */
+        .infra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: var(--deep); color: white; padding: 80px; border-radius: 4px; }
+        .infra-tag { background: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
+
+        /* Stat Section */
+        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; margin-top: 50px; }
+        .stat-item h4 { font-size: 2.5rem; color: var(--accent); font-weight: 800; }
+        .stat-item p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+
+        /* Buttons */
+        .btn-corp { background: var(--accent); color: white; padding: 20px 40px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; transition: 0.3s; text-decoration: none; display: inline-block; font-size: 0.8rem; }
+        .btn-corp:hover { background: var(--deep); transform: translateY(-2px); }
+
+        /* Footer */
+        .footer { background: #f8fafc; padding: 100px 2rem 40px; border-top: 1px solid var(--border); }
+        .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; }
+        .footer h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: var(--deep); }
+        .footer-links a { display: block; text-decoration: none; color: #5f6368; font-size: 0.85rem; margin-bottom: 15px; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 3rem; }
+            .infra-grid { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="global-loader"><div class="loader-content"><h1>H.E.M. AFRICA</h1><div class="loader-bar"></div></div></div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">H.E.M. AFRICA<span>GROUP</span></a>
+            <div class="nav-links">
+                <a href="#divisions">Divisions</a>
+                <a href="#infra">Infrastructure</a>
+                <a href="press.html">Newsroom</a>
+                <a href="board.html">Leadership</a>
+                <a href="#" style="color: var(--accent); border: 1px solid var(--accent); padding: 8px 15px;">Secure Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            HEM SSO: OPERATIONAL • ONTRIXA MVP: DEPLOYED • PINGLO BETA: OPEN • CINEXA WEB PLATFORM: LAUNCHING NEXT WEEK • HMN MUSIC INTERVIEWS: LIVE • INFRASTRUCTURE SCALE: WEST AFRICA HUB READY •
+        </div>
+    </div>
+
+    <header class="hero">
+        <span class="card-label">Hustle Excellence Movement</span>
+        <h1>A Multi-Division<br>Digital Empire.</h1>
+        <p>Architecting the future of African tech through AI, Social Connectivity, Media Infrastructure, and Scalable Web Platforms.</p>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <a href="#divisions" class="btn-corp">Explore Ecosystem</a>
+            <a href="#mission" class="btn-corp" style="background: transparent; border: 1px solid var(--border); color: var(--deep);">The Movement</a>
+        </div>
+    </header>
+
+    <section class="section" id="divisions">
+        <div class="section-header">
+            <span class="card-label">The Portfolio</span>
+            <h2>Subsidiary Ecosystem</h2>
+            <p>Diversified assets driving the H.E.M. vision forward.</p>
+        </div>
+        
+        <div class="grid-primary">
+            <div class="data-card">
+                <div>
+                    <span class="card-label">Social • Pinglo</span>
+                    <h3>The Super Social Platform</h3>
+                    <p style="color: #5f6368; font-size: 0.9rem;">Africa's communication engine built for high-scale engagement and community culture.</p>
+                </div>
+                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-top: 20px;">View Product →</a>
+            </div>
+            
+            <div class="data-card" style="border-top: 4px solid var(--accent);">
+                <div>
+                    <span class="card-label">Media • Cinexa <span class="badge">LAUNCHING NEXT WEEK</span></span>
+                    <h3>The Cinexa Web Platform</h3>
+                    <p style="color: #5f6368; font-size: 0.9rem;">Cinexa Plus: A powerful intelligence engine for movie discovery and entertainment metadata. Launching globally next week.</p>
+                </div>
+                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-top: 20px;">Get Early Access →</a>
+            </div>
+
+            <div class="data-card">
+                <div>
+                    <span class="card-label">AI SaaS • Ontrixa</span>
+                    <h3>Intelligence as a Service</h3>
+                    <p style="color: #5f6368; font-size: 0.9rem;">AI-powered SEO, marketing tools, and business automation for the global market.</p>
+                </div>
+                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-top: 20px;">View Product →</a>
+            </div>
+
+            <div class="data-card">
+                <div>
+                    <span class="card-label">Content • HMN</span>
+                    <h3>HEM Media Network</h3>
+                    <p style="color: #5f6368; font-size: 0.9rem;">Podcasts, interviews, and creator ecosystems. The Spotify-YouTube hybrid for Africa.</p>
+                </div>
+                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-top: 20px;">View Product →</a>
+            </div>
+        </div>
+    </section>
+    <style>
+        .ceo-section { 
+            background: #fcfdfe; 
+            border-top: 1px solid var(--border); 
+            border-bottom: 1px solid var(--border); 
+            position: relative;
+            overflow: hidden;
+        }
+        .ceo-container { 
+            display: grid; 
+            grid-template-columns: 1fr 1.5fr; 
+            gap: 80px; 
+            align-items: start; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 120px 2rem; 
+        }
+        .ceo-quote-mark { 
+            font-size: 10rem; 
+            color: var(--accent); 
+            opacity: 0.08; 
+            line-height: 0; 
+            margin-bottom: -30px; 
+            font-family: serif; 
+            user-select: none;
+        }
+        .ceo-text p { 
+            font-size: 1.15rem; 
+            color: #334155; 
+            margin-bottom: 28px; 
+            font-weight: 400; 
+            max-width: 750px; 
+            letter-spacing: -0.01em;
+        }
+        .ceo-signature { 
+            margin-top: 40px; 
+            border-top: 1px solid var(--border); 
+            display: inline-block; 
+            padding-top: 25px;
+        }
+        .ceo-name { 
+            font-weight: 800; 
+            font-size: 1.3rem; 
+            color: var(--deep); 
+            margin-bottom: 4px; 
+            letter-spacing: -0.5px;
+        }
+        .ceo-title { 
+            font-size: 0.7rem; 
+            color: var(--text-muted); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: 700; 
+            margin-bottom: 4px;
+        }
+        .ceo-highlight {
+            color: var(--deep);
+            font-weight: 700;
+        }
+
+        @media (max-width: 1024px) {
+            .ceo-container { grid-template-columns: 1fr; gap: 50px; padding: 80px 2rem; }
+            .ceo-quote-mark { font-size: 7rem; }
+        }
+    </style>
+
+    <section class="ceo-section" id="ceo-note">
+        <div class="ceo-container">
+            <div class="section-header" style="margin-bottom: 0;">
+                <span class="card-label">Executive Message</span>
+                <h2 style="font-size: 3.5rem; line-height: 1; margin-top: 10px; color: var(--deep);">Founder &<br>CEO Note</h2>
+                <div style="width: 40px; height: 3px; background: var(--accent); margin-top: 30px;"></div>
+                <p style="margin-top: 30px; font-weight: 600; color: var(--deep); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">H.E.M. Africa Group</p>
+            </div>
+
+            <div class="ceo-text">
+                <div class="ceo-quote-mark">“</div>
+                <p><span class="ceo-highlight">We’re just getting started.</span></p>
+                <p>H.E.M was created with a simple vision — to begin building the future of African technology from the ground up. Not someday, not eventually, but now.</p>
+                <p>We haven’t launched everything yet, and that’s intentional. What you’re seeing today is the foundation—the first step in a much bigger journey.</p>
+                <p>Our focus is clear: build, improve, and keep pushing forward. Every product, every system, and every idea is part of a larger mission to create something meaningful and lasting.</p>
+                <p>This is not the final version. <span class="ceo-highlight">This is the beginning.</span> We are building the future of African tech.</p>
+                
+                <div class="ceo-signature">
+                    <p class="ceo-name">Haneef Mohammed</p>
+                    <p class="ceo-title">Founder & Chief Executive Officer</p>
+                    <p class="ceo-title" style="color: var(--accent);">Hustle Excellence Movement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;" id="infra">
+        <div class="infra-grid">
+            <div>
+                <span class="infra-tag">CORE INFRASTRUCTURE</span>
+                <h2 style="font-size: 3rem; margin: 20px 0; color: white;">The Power Layer.</h2>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px;">Every H.E.M. product is powered by our proprietary cloud layer, providing unified security, SSO authentication, and global data scaling.</p>
+                <div class="stat-row">
+                    <div class="stat-item"><h4>99.9%</h4><p>Uptime</p></div>
+                    <div class="stat-item"><h4>SSO</h4><p>Unified Login</p></div>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 40px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="margin-bottom: 20px;">
+                    <p style="font-weight: 800; font-size: 0.7rem; color: var(--accent);">SECURITY STATUS</p>
+                    <p style="font-size: 1.2rem;">H.E.M. Core SSO: <span style="color: #00ff88;">ACTIVE</span></p>
+                </div>
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">Our Single Sign-On system allows users to traverse Pinglo, Cinexa, and Ontrixa with one secure identity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="mission">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+            <div>
+                <span class="card-label">Our Philosophy</span>
+                <h2 style="font-size: 3rem; color: var(--deep); line-height: 1.1; margin-bottom: 20px;">Relentless Execution.<br>Premium Quality.</h2>
+                <p style="color: #5f6368; margin-bottom: 30px;">H.E.M. stands for <strong>Hustle Excellence Movement</strong>. We believe in high-standard innovation that combines community with world-class engineering.</p>
+                <a href="board.html" class="btn-corp">Meet the Leadership</a>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="background: #f0f4ff; padding: 40px; text-align: center;">
+                    <h3 style="font-size: 2rem; color: var(--accent);">H</h3>
+                    <p style="font-weight: 800; font-size: 0.6rem; text-transform: uppercase;">Hustle</p>
+                </div>
+                <div style="background: #eef2ff; padding: 40px; text-align: center;">
+                    <h3 style="font-size: 2rem; color: var(--accent);">E</h3>
+                    <p style="font-weight: 800; font-size: 0.6rem; text-transform: uppercase;">Excellence</p>
+                </div>
+                <div style="background: #e0e7ff; padding: 40px; text-align: center; grid-column: span 2;">
+                    <h3 style="font-size: 2rem; color: var(--accent);">M</h3>
+                    <p style="font-weight: 800; font-size: 0.6rem; text-transform: uppercase;">Movement</p>
+                </div>
+            </div>
+        </div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h2 style="font-weight: 900; margin-bottom: 15px; font-size: 1.5rem;">H.E.M. <span style="color: var(--accent);">AFRICA</span></h2>
+                <p style="color: #5f6368; font-size: 0.9rem; max-width: 300px;">The high-standard parental company for the next generation of digital infrastructure.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Divisions</h4>
+                <a href="#">Pinglo Social</a>
+                <a href="#">Cinexa Web</a>
+                <a href="#">Ontrixa AI</a>
+                <a href="core.html">HEM Core</a>
+            </div>
+            <div class="footer-links">
+                <h4>Corporate</h4>
+                <a href="board.html">The Board</a>
+                <a href="jobs.html">Careers</a>
+                <a href="press.html">Newsroom</a>
+                <a href="investment.html">Investment</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="status.html">Infrastructure Status</a>
+            </div>
+        </div>
+        <div style="max-width: 1400px; margin: 80px auto 0; border-top: 1px solid var(--border); padding-top: 40px; font-size: 0.75rem; color: #94a3b8; display: flex; justify-content: space-between;">
+            <p>© 2026 H.E.M. Africa Group. All Rights Reserved.</p>
+            <p>NG • US • UK</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('global-loader').style.opacity = '0';
+                setTimeout(() => { document.getElementById('global-loader').style.display = 'none'; }, 500);
+            }, 800);
+        });
+    </script>
+</body>
+</html>

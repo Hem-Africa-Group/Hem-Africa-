@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status | H.E.M. Africa Group</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #003399; --deep: #001f5c; --success: #00c853; --border: #e1e8f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: #f8fafc; color: #1a1a1b; padding: 40px 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        .status-hero { background: #fff; padding: 30px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
+        .pulse { width: 12px; height: 12px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 0 rgba(0, 200, 83, 0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 200, 83, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(0, 200, 83, 0); } 100% { box-shadow: 0 0 0 0px rgba(0, 200, 83, 0); } }
+        .service-list { background: #fff; border: 1px solid var(--border); }
+        .service-item { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .service-item:last-child { border-bottom: none; }
+        .service-name { font-weight: 700; font-size: 0.9rem; color: var(--deep); }
+        .uptime { font-size: 0.75rem; color: #94a3b8; }
+        .status-label { font-size: 0.7rem; font-weight: 800; color: var(--success); text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="font-weight: 800; color: var(--deep);">Network Status</h1>
+            <p style="color: #64748b;">Live monitoring of H.E.M. global infrastructure.</p>
+        </div>
+        <div class="status-hero">
+            <div>
+                <span class="status-label">Global Status</span>
+                <h2 style="margin-top: 5px;">All Systems Operational</h2>
+            </div>
+            <div class="pulse"></div>
+        </div>
+      <div class="service-list">
+    <div class="service-item">
+        <div><p class="service-name">H.E.M. Core SSO</p><p class="uptime">Live Node: Lagos/NY</p></div>
+        <span class="status-label" style="color: var(--success);">Operational</span>
+    </div>
+
+    <div class="service-item">
+        <div><p class="service-name">Ontrixa AI Engine</p><p class="uptime">Sprint: SaaS Integration</p></div>
+        <span class="status-label" style="color: #ffd600;">In Development</span>
+    </div>
+
+    <div class="service-item">
+        <div><p class="service-name">Pinglo Mobile Core</p><p class="uptime">Sprint: Beta Discovery</p></div>
+        <span class="status-label" style="color: #ffd600;">In Development</span>
+    </div>
+
+    <div class="service-item">
+        <div><p class="service-name">Cinexa Hardware API</p><p class="uptime">Phase: Prototype Q2</p></div>
+        <span class="status-label" style="color: #94a3b8;">Scheduled</span>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
