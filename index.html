@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HEM Africa Group | Institutional Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --accent: #003399; 
@@ -13,143 +13,119 @@
             --border: #e1e8f0;
             --text-muted: #94a3b8;
             --glass: rgba(255, 255, 255, 0.8);
+            --neon: #00ff88;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background: #ffffff; color: #1a1a1b; line-height: 1.6; overflow-x: hidden; }
 
-        /* --- MIGRATION POPUP STYLES --- */
+        /* --- CINEMATIC MIGRATION & LAUNCH POPUP --- */
         .migration-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 31, 92, 0.95); /* Using your --deep color */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000; /* Above the loader */
-            backdrop-filter: blur(10px);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #0a192f 0%, #02060d 100%);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 10000; backdrop-filter: blur(15px);
+            transition: opacity 0.6s ease;
         }
-
         .migration-card {
-            background: white;
-            padding: 50px;
-            max-width: 500px;
-            width: 90%;
-            border-radius: 4px;
-            text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            border-top: 5px solid var(--accent);
+            background: #fff; max-width: 850px; width: 95%; border-radius: 2px;
+            overflow: hidden; box-shadow: 0 60px 120px rgba(0,0,0,0.9);
+            display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.1);
         }
-
-        .migration-card h2 {
-            color: var(--deep);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .pop-header {
+            background: var(--deep); color: white; padding: 50px 40px; text-align: center; border-bottom: 4px solid var(--accent);
         }
-
-        .migration-card p {
-            color: #5f6368;
-            font-size: 1rem;
-            margin-bottom: 30px;
+        .pop-header h2 { font-size: 2.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; }
+        .pop-header p { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--neon); margin-top: 10px; letter-spacing: 3px; text-transform: uppercase; }
+        
+        .pop-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; background: white; }
+        .pop-content { padding: 40px; border-right: 1px solid var(--border); }
+        .launch-btn {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #f8fafc; padding: 20px; margin-bottom: 12px;
+            text-decoration: none; color: var(--deep); font-weight: 800;
+            border-left: 5px solid var(--accent); transition: 0.3s;
         }
+        .launch-btn:hover { background: var(--accent); color: white; transform: translateX(5px); }
+        .sys-logs { padding: 40px; background: #050b14; color: white; font-family: 'Space Mono', monospace; }
+        .log-entry { font-size: 0.7rem; margin-bottom: 6px; display: block; color: var(--neon); }
 
-        .migration-btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.8rem;
-        }
-
-        .migration-btn:hover {
-            background: var(--deep);
-        }
-
-        /* --- REST OF YOUR ORIGINAL STYLES --- */
-        #global-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease; }
-        .loader-content h1 { letter-spacing: 5px; font-size: 1rem; color: var(--deep); font-weight: 800; }
-        .loader-bar { width: 100px; height: 2px; background: #eee; margin-top: 15px; position: relative; overflow: hidden; }
-        .loader-bar::after { content: ''; position: absolute; left: -100%; width: 100%; height: 100%; background: var(--accent); animation: load 1.2s infinite; }
-        @keyframes load { 100% { left: 100%; } }
-
+        /* --- CORE PAGE ELEMENTS --- */
+        #global-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s; }
         .nav { position: sticky; top: 0; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; padding: 1rem 2rem; align-items: center; }
-        .logo { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; text-decoration: none; color: #000; letter-spacing: 1px; }
-        .logo span { color: var(--accent); font-weight: 300; margin-left: 5px; }
-        .nav-links a { text-decoration: none; color: #1a1a1b; font-size: 0.75rem; font-weight: 700; margin-left: 2rem; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
-        .nav-links a:hover { color: var(--accent); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; padding: 1.2rem 2rem; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; text-decoration: none; color: #000; }
+        .logo span { color: var(--accent); font-weight: 300; }
+        .nav-links a { text-decoration: none; color: #1a1a1b; font-size: 0.75rem; font-weight: 700; margin-left: 2rem; text-transform: uppercase; }
 
-        .ticker-wrap { background: var(--deep); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .ticker-wrap { background: var(--deep); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; }
         .ticker { display: inline-block; animation: ticker 50s linear infinite; font-weight: 800; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        .hero { background: radial-gradient(circle at 70% 30%, #f0f4ff, #ffffff); padding: 160px 2rem; text-align: center; border-bottom: 1px solid var(--border); }
-        .hero h1 { font-size: 5rem; font-weight: 800; color: var(--deep); line-height: 1; margin-bottom: 25px; letter-spacing: -2px; }
-        .hero p { max-width: 800px; margin: 0 auto 40px; color: #5f6368; font-size: 1.3rem; font-weight: 400; }
+        .hero { background: radial-gradient(circle at 70% 30%, #f0f4ff, #ffffff); padding: 160px 2rem; text-align: center; }
+        .hero h1 { font-size: 5rem; font-weight: 800; color: var(--deep); line-height: 1; letter-spacing: -2px; }
 
+        /* --- DIVISIONS --- */
         .section { max-width: 1400px; margin: 0 auto; padding: 100px 2rem; }
-        .section-header { margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.5rem; color: var(--deep); letter-spacing: -1px; }
-        .grid-primary { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-        .data-card { background: #fff; padding: 50px; transition: 0.4s; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
-        .data-card:hover { background: #fbfcfe; transform: scale(1.01); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .card-label { font-size: 0.65rem; font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; display: block; letter-spacing: 2px; }
-        .data-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--deep); }
-        
-        .badge { background: var(--accent); color: white; padding: 4px 8px; font-size: 0.6rem; border-radius: 2px; margin-left: 10px; vertical-align: middle; }
+        .grid-primary { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+        .data-card { background: #fff; padding: 50px; min-height: 350px; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; color: inherit; transition: 0.4s; }
+        .data-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); z-index: 2; }
+        .card-label { font-size: 0.65rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block; }
+        .badge { background: var(--accent); color: white; padding: 4px 10px; font-size: 0.6rem; border-radius: 2px; margin-left: 10px; font-weight: 800; }
 
+        /* --- CEO SECTION --- */
+        .ceo-section { background: #fcfdfe; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .ceo-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; max-width: 1400px; margin: 0 auto; padding: 120px 2rem; }
+        .ceo-quote-mark { font-size: 10rem; color: var(--accent); opacity: 0.08; line-height: 0; font-family: serif; }
+        .ceo-text p { font-size: 1.15rem; color: #334155; margin-bottom: 28px; }
+        .ceo-highlight { color: var(--deep); font-weight: 700; }
+        .ceo-signature { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 25px; }
+
+        /* --- INFRASTRUCTURE --- */
         .infra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: var(--deep); color: white; padding: 80px; border-radius: 4px; }
-        .infra-tag { background: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
-
-        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; margin-top: 50px; }
+        .stat-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: center; margin-top: 50px; }
         .stat-item h4 { font-size: 2.5rem; color: var(--accent); font-weight: 800; }
-        .stat-item p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
 
-        .btn-corp { background: var(--accent); color: white; padding: 20px 40px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; transition: 0.3s; text-decoration: none; display: inline-block; font-size: 0.8rem; }
-        .btn-corp:hover { background: var(--deep); transform: translateY(-2px); }
-
+        /* --- FOOTER --- */
         .footer { background: #f8fafc; padding: 100px 2rem 40px; border-top: 1px solid var(--border); }
         .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; }
-        .footer h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: var(--deep); }
-        .footer-links a { display: block; text-decoration: none; color: #5f6368; font-size: 0.85rem; margin-bottom: 15px; transition: 0.2s; }
-        .footer-links a:hover { color: var(--accent); }
-
-        .ceo-section { background: #fcfdfe; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-        .ceo-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; max-width: 1400px; margin: 0 auto; padding: 120px 2rem; }
-        .ceo-quote-mark { font-size: 10rem; color: var(--accent); opacity: 0.08; line-height: 0; margin-bottom: -30px; font-family: serif; user-select: none; }
-        .ceo-text p { font-size: 1.15rem; color: #334155; margin-bottom: 28px; font-weight: 400; max-width: 750px; letter-spacing: -0.01em; }
-        .ceo-signature { margin-top: 40px; border-top: 1px solid var(--border); display: inline-block; padding-top: 25px; }
-        .ceo-name { font-weight: 800; font-size: 1.3rem; color: var(--deep); margin-bottom: 4px; letter-spacing: -0.5px; }
-        .ceo-title { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
-        .ceo-highlight { color: var(--deep); font-weight: 700; }
+        .footer-links a { display: block; text-decoration: none; color: #5f6368; font-size: 0.85rem; margin-bottom: 15px; }
 
         @media (max-width: 1024px) {
-            .ceo-container { grid-template-columns: 1fr; gap: 50px; padding: 80px 2rem; }
-            .hero h1 { font-size: 3rem; }
-            .infra-grid { grid-template-columns: 1fr; }
-            .stat-row { grid-template-columns: 1fr 1fr; }
+            .ceo-container, .infra-grid, .footer-grid, .pop-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- --- MIGRATION NOTIFICATION --- -->
     <div id="migration-popup" class="migration-overlay">
         <div class="migration-card">
-            <h2>System Migration</h2>
-            <p>H.E.M. Africa Group is currently migrating its global infrastructure to <strong>AWS Cloud Systems</strong>. You may experience temporary interface updates as we finalize the deployment.</p>
-            <button onclick="closeMigration()" class="migration-btn">Acknowledge & Enter</button>
+            <div class="pop-header">
+                <p>Global Infrastructure Initialization</p>
+                <h2>CINEXA + NEWS<br>SYSTEMS ONLINE</h2>
+            </div>
+            <div class="pop-grid">
+                <div class="pop-content">
+                    <a href="https://cinexaplus.com" class="launch-btn" target="_blank">Cinexa Plus <span>LIVE</span></a>
+                    <a href="https://news.hemafrica.com" class="launch-btn" target="_blank">HEM Newsroom <span>LIVE</span></a>
+                    <p style="font-size: 0.85rem; color: #64748b; margin-top: 20px;">
+                        Finalizing <strong>AWS African Sovereign Cloud</strong> migration. All entertainment metadata and newsroom nodes are operational.
+                    </p>
+                </div>
+                <div class="sys-logs">
+                    <span class="log-entry">> AWS Migration... [OK]</span>
+                    <span class="log-entry">> Region: af-south-1</span>
+                    <span class="log-entry">> Cinexa Sync... [100%]</span>
+                    <span class="log-entry">> Newsroom SSL... [READY]</span>
+                    <span class="log-entry" style="margin-top: 15px; color: #fff; font-weight: 700;">SYSTEM READY</span>
+                </div>
+            </div>
+            <div style="padding: 25px 40px; background: #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+                <p style="font-size: 0.7rem; font-weight: 800; color: var(--text-muted);">© 2026 HEM AFRICA GROUP</p>
+                <button onclick="closeMigration()" style="background: var(--deep); color: white; border: none; padding: 15px 40px; font-weight: 800; cursor: pointer; text-transform: uppercase;">Initialize</button>
+            </div>
         </div>
     </div>
 
@@ -161,118 +137,94 @@
             <div class="nav-links">
                 <a href="#divisions">Divisions</a>
                 <a href="#infra">Infrastructure</a>
-                <a href="press.html">Newsroom</a>
+                <a href="https://news.hemafrica.com">Newsroom</a>
                 <a href="board.html">Leadership</a>
-                <a href="#" style="color: var(--accent); border: 1px solid var(--accent); padding: 8px 15px;">Secure Login</a>
             </div>
         </div>
     </nav>
 
     <div class="ticker-wrap">
         <div class="ticker">
-            HEM SSO: OPERATIONAL • ONTRIXA MVP: DEPLOYED • PINGLO BETA: OPEN • CINEXA WEB PLATFORM: LAUNCHING NEXT WEEK • HMN MUSIC INTERVIEWS: LIVE • INFRASTRUCTURE SCALE: WEST AFRICA HUB READY •
+            AWS INFRASTRUCTURE MIGRATION: 99.8% COMPLETE • CINEXA PLUS: LIVE • HEM NEWS NETWORK: DEPLOYED • SCALE: AF-SOUTH-1 CAPE TOWN HUB • GLOBAL LATENCY: 14MS • SSO CORE: OPERATIONAL •
         </div>
     </div>
 
     <header class="hero">
         <span class="card-label">Hustle Excellence Movement</span>
         <h1>A Multi-Division<br>Digital Empire.</h1>
-        <p>Architecting the future of African tech through AI, Social Connectivity, Media Infrastructure, and Scalable Web Platforms.</p>
-        <div style="display: flex; justify-content: center; gap: 20px;">
-            <a href="#divisions" class="btn-corp">Explore Ecosystem</a>
-            <a href="#mission" class="btn-corp" style="background: transparent; border: 1px solid var(--border); color: var(--deep);">The Movement</a>
-        </div>
+        <p style="margin-top: 25px; color: #5f6368; max-width: 800px; margin: 25px auto 0; font-size: 1.2rem;">
+            Architecting the future of African tech through AWS Cloud systems, AI integration, and Scalable Media Platforms.
+        </p>
     </header>
 
     <section class="section" id="divisions">
-        <div class="section-header">
+        <div class="section-header" style="margin-bottom: 60px;">
             <span class="card-label">The Portfolio</span>
-            <h2>Subsidiary Ecosystem</h2>
-            <p>Diversified assets driving the H.E.M. vision forward.</p>
+            <h2 style="font-size: 3rem; color: var(--deep);">Subsidiary Ecosystem</h2>
         </div>
-        
         <div class="grid-primary">
+            <div class="data-card" style="border-top: 5px solid var(--accent);">
+                <div>
+                    <span class="card-label">Media • Cinexa <span class="badge">LIVE</span></span>
+                    <h3>Cinexa Plus</h3>
+                    <p style="color: #5f6368;">Global intelligence engine for movie discovery and entertainment metadata.</p>
+                </div>
+                <a href="https://cinexaplus.com" style="color: var(--accent); font-weight: 800; font-size: 0.75rem; text-transform: uppercase;">Launch Platform →</a>
+            </div>
+            <div class="data-card">
+                <div>
+                    <span class="card-label">Content • HEM Media <span class="badge">LIVE</span></span>
+                    <h3>Newsroom</h3>
+                    <p style="color: #5f6368;">Official voice of the movement. Delivering tech and cultural insights.</p>
+                </div>
+                <a href="https://news.hemafrica.com" style="color: var(--accent); font-weight: 800; font-size: 0.75rem; text-transform: uppercase;">Read News →</a>
+            </div>
             <div class="data-card">
                 <div>
                     <span class="card-label">Social • Pinglo</span>
-                    <h3>The Super Social Platform</h3>
-                    <p style="color: #5f6368; font-size: 0.9rem;">Africa's communication engine built for high-scale engagement and community culture.</p>
+                    <h3>The Social Engine</h3>
+                    <p style="color: #5f6368;">Africa's communication engine built for high-scale engagement.</p>
                 </div>
-                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-top: 20px;">View Product →</a>
-            </div>
-            
-            <div class="data-card" style="border-top: 4px solid var(--accent);">
-                <div>
-                    <span class="card-label">Media • Cinexa <span class="badge">LAUNCHING NEXT WEEK</span></span>
-                    <h3>The Cinexa Web Platform</h3>
-                    <p style="color: #5f6368; font-size: 0.9rem;">Cinexa Plus: A powerful intelligence engine for movie discovery and entertainment metadata. Launching globally next week.</p>
-                </div>
-                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-top: 20px;">Get Early Access →</a>
-            </div>
-
-            <div class="data-card">
-                <div>
-                    <span class="card-label">AI SaaS • Ontrixa</span>
-                    <h3>Intelligence as a Service</h3>
-                    <p style="color: #5f6368; font-size: 0.9rem;">AI-powered SEO, marketing tools, and business automation for the global market.</p>
-                </div>
-                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-top: 20px;">View Product →</a>
-            </div>
-
-            <div class="data-card">
-                <div>
-                    <span class="card-label">Content • HMN</span>
-                    <h3>HEM Media Network</h3>
-                    <p style="color: #5f6368; font-size: 0.9rem;">Podcasts, interviews, and creator ecosystems. The Spotify-YouTube hybrid for Africa.</p>
-                </div>
-                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-top: 20px;">View Product →</a>
+                <a href="#" style="color: var(--accent); font-weight: 800; font-size: 0.75rem; text-transform: uppercase;">View Product →</a>
             </div>
         </div>
     </section>
 
-    <section class="ceo-section" id="ceo-note">
+    <section class="ceo-section">
         <div class="ceo-container">
-            <div class="section-header" style="margin-bottom: 0;">
+            <div class="section-header">
                 <span class="card-label">Executive Message</span>
-                <h2 style="font-size: 3.5rem; line-height: 1; margin-top: 10px; color: var(--deep);">Founder &<br>CEO Note</h2>
+                <h2 style="font-size: 3.5rem; color: var(--deep);">CEO Note</h2>
                 <div style="width: 40px; height: 3px; background: var(--accent); margin-top: 30px;"></div>
-                <p style="margin-top: 30px; font-weight: 600; color: var(--deep); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">H.E.M. Africa Group</p>
             </div>
-
             <div class="ceo-text">
                 <div class="ceo-quote-mark">“</div>
                 <p><span class="ceo-highlight">We’re just getting started.</span></p>
-                <p>H.E.M was created with a simple vision — to begin building the future of African technology from the ground up. Not someday, not eventually, but now.</p>
-                <p>We haven’t launched everything yet, and that’s intentional. What you’re seeing today is the foundation—the first step in a much bigger journey.</p>
-                <p>Our focus is clear: build, improve, and keep pushing forward. Every product, every system, and every idea is part of a larger mission to create something meaningful and lasting.</p>
-                <p>This is not the final version. <span class="ceo-highlight">This is the beginning.</span> We are building the future of African tech.</p>
-                
+                <p>H.E.M was created with a simple vision — to begin building the future of African technology from the ground up. This is the foundation.</p>
+                <p>Our focus is clear: build, improve, and keep pushing forward. This is not the final version. <span class="ceo-highlight">This is the beginning.</span></p>
                 <div class="ceo-signature">
-                    <p class="ceo-name">Haneef Mohammed</p>
-                    <p class="ceo-title">Founder & Chief Executive Officer</p>
-                    <p class="ceo-title" style="color: var(--accent);">Hustle Excellence Movement</p>
+                    <p style="font-weight: 800; font-size: 1.3rem; color: var(--deep);">Haneef Mohammed</p>
+                    <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px;">Founder & CEO</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" style="padding-top: 0;" id="infra">
+    <section class="section" id="infra">
         <div class="infra-grid">
             <div>
-                <span class="infra-tag">CORE INFRASTRUCTURE</span>
-                <h2 style="font-size: 3rem; margin: 20px 0; color: white;">The Power Layer.</h2>
-                <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px;">Every H.E.M. product is powered by our proprietary cloud layer, providing unified security, SSO authentication, and global data scaling.</p>
+                <span style="background: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800;">AWS CORE INFRASTRUCTURE</span>
+                <h2 style="font-size: 3rem; margin: 20px 0;">Global Scaling.</h2>
+                <p style="color: rgba(255,255,255,0.7);">Every H.E.M. product is powered by our AWS African Sovereign cloud layer.</p>
                 <div class="stat-row">
                     <div class="stat-item"><h4>99.9%</h4><p>Uptime</p></div>
-                    <div class="stat-item"><h4>SSO</h4><p>Unified Login</p></div>
+                    <div class="stat-item"><h4>AWS</h4><p>Partner</p></div>
                 </div>
             </div>
             <div style="background: rgba(255,255,255,0.05); padding: 40px; border: 1px solid rgba(255,255,255,0.1);">
-                <div style="margin-bottom: 20px;">
-                    <p style="font-weight: 800; font-size: 0.7rem; color: var(--accent);">SECURITY STATUS</p>
-                    <p style="font-size: 1.2rem;">H.E.M. Core SSO: <span style="color: #00ff88;">ACTIVE</span></p>
-                </div>
-                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">Our Single Sign-On system allows users to traverse Pinglo, Cinexa, and Ontrixa with one secure identity.</p>
+                <p style="font-weight: 800; font-size: 0.7rem; color: var(--accent);">SECURITY STATUS</p>
+                <p style="font-size: 1.2rem; margin: 10px 0;">H.E.M. Core SSO: <span style="color: #00ff88;">ACTIVE</span></p>
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">Unified SSO identity across all properties.</p>
             </div>
         </div>
     </section>
@@ -280,46 +232,38 @@
     <footer class="footer">
         <div class="footer-grid">
             <div>
-                <h2 style="font-weight: 900; margin-bottom: 15px; font-size: 1.5rem;">H.E.M. <span style="color: var(--accent);">AFRICA</span></h2>
-                <p style="color: #5f6368; font-size: 0.9rem; max-width: 300px;">The high-standard parental company for the next generation of digital infrastructure.</p>
+                <h2 style="font-weight: 900; font-size: 1.5rem;">H.E.M. <span style="color: var(--accent);">AFRICA</span></h2>
+                <p style="color: #5f6368; font-size: 0.9rem; margin-top: 15px;">Parental holding for digital infrastructure.</p>
             </div>
             <div class="footer-links">
                 <h4>Divisions</h4>
-                <a href="#">Pinglo Social</a>
-                <a href="#">Cinexa Web</a>
-                <a href="#">Ontrixa AI</a>
+                <a href="#">Pinglo Social</a><a href="#">Cinexa Plus</a><a href="#">Ontrixa AI</a>
             </div>
             <div class="footer-links">
                 <h4>Corporate</h4>
-                <a href="board.html">The Board</a>
-                <a href="jobs.html">Careers</a>
-                <a href="press.html">Newsroom</a>
+                <a href="board.html">The Board</a><a href="press.html">Newsroom</a>
             </div>
             <div class="footer-links">
                 <h4>Legal</h4>
-                <a href="terms.html">Terms</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="status.html">Infrastructure</a>
+                <a href="#">Terms</a><a href="#">Privacy</a>
             </div>
         </div>
-        <div style="max-width: 1400px; margin: 80px auto 0; border-top: 1px solid var(--border); padding-top: 40px; font-size: 0.75rem; color: #94a3b8; display: flex; justify-content: space-between;">
+        <div style="max-width: 1400px; margin: 60px auto 0; border-top: 1px solid var(--border); padding-top: 40px; font-size: 0.75rem; color: #94a3b8; display: flex; justify-content: space-between;">
             <p>© 2026 H.E.M. Africa Group. All Rights Reserved.</p>
             <p>NG • US • UK</p>
         </div>
     </footer>
 
     <script>
-        // Loader Logic
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('global-loader').style.opacity = '0';
                 setTimeout(() => { document.getElementById('global-loader').style.display = 'none'; }, 500);
             }, 800);
         });
-
-        // Migration Popup Logic
         function closeMigration() {
-            document.getElementById('migration-popup').style.display = 'none';
+            document.getElementById('migration-popup').style.opacity = '0';
+            setTimeout(() => { document.getElementById('migration-popup').style.display = 'none'; }, 600);
         }
     </script>
 </body>
