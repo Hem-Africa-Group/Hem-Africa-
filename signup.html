@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | HEM Cloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Dashboard Shell -->
+    <div id="app" class="hidden"> 
+        <main class="max-w-7xl mx-auto p-6 md:p-10">
+            <header class="flex justify-between items-center mb-10">
+                <div>
+                    <h1 class="text-2xl font-bold">Workspace</h1>
+                    <p id="user-display" class="text-gray-400 text-sm">Welcome back</p>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Data Cards -->
+                <div class="bg-white p-6 rounded-3xl border shadow-sm">
+                    <p class="text-gray-400 text-xs font-bold uppercase">Storage Used</p>
+                    <h2 id="storage-val" class="text-2xl font-bold mt-2">--</h2>
+                </div>
+                <!-- ... other cards ... -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 1. Session Check
+        const token = localStorage.getItem('hem_session_token');
+        if (!token) {
+            window.location.href = 'login.html'; // Redirect to login
+        } else {
+            document.getElementById('app').classList.remove('hidden');
+            loadDashboardData(token);
+        }
+
+        // 2. Fetch Data from AWS Lambda
+        async function loadDashboardData(token) {
+            try {
+                const response = await fetch('https://your-api-id.execute-api.region.amazonaws.com/prod/dashboard', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await response.json();
+                
+                // 3. Inject Data
+                document.getElementById('user-display').innerText = `Welcome back, ${data.username}`;
+                document.getElementById('storage-val').innerText = data.storage;
+                lucide.createIcons();
+            } catch (err) {
+                console.error("Failed to load dashboard data", err);
+            }
+        }
+    </script>
+</body>
+</html>
