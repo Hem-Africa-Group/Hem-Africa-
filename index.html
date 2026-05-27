@@ -106,21 +106,48 @@
                 <p>Global Infrastructure Initialization</p>
                 <h2>CINEXA + NEWS<br>SYSTEMS ONLINE</h2>
             </div>
-            <div class="pop-grid">
-                <div class="pop-content">
-                    <a href="https://cinexaplus.com" class="launch-btn" target="_blank">Cinexa Plus <span>LIVE</span></a>
-                    <a href="https://news.hemafrica.com" class="launch-btn" target="_blank">HEM Newsroom <span>LIVE</span></a>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-top: 20px;">
-                        Finalizing <strong>AWS African Sovereign Cloud</strong> migration. All entertainment metadata and newsroom nodes are operational.
-                    </p>
+            <!-- REPLACE YOUR EXISTING #migration-popup WITH THIS -->
+<div id="migration-popup" class="migration-overlay">
+    <div class="migration-card" id="popup-content">
+        <!-- Script dynamically loads content here -->
+    </div>
+</div>
+
+<style>
+    /* Add this to your <style> block for the gold accent */
+    .gold-text { background: linear-gradient(90deg, #ffd700, #ffaa00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .status-badge { font-family: 'Space Mono', monospace; font-size: 0.6rem; padding: 2px 8px; border: 1px solid var(--accent); border-radius: 4px; }
+</style>
+
+<script>
+    window.addEventListener('load', () => {
+        const popup = document.getElementById('popup-content');
+        const now = new Date();
+        const eidEnd = new Date('2026-05-28T23:59:59');
+
+        if (now < eidEnd) {
+            popup.innerHTML = `
+                <div class="pop-header" style="background: #050b14; border-bottom: 2px solid #ffd700;">
+                    <p class="gold-text">Eid Mubarak 2026</p>
+                    <h2 style="color: #fff; font-size: 2rem;">H.E.M. AFRICA GROUP</h2>
                 </div>
-                <div class="sys-logs">
-                    <span class="log-entry">> AWS Migration... [OK]</span>
-                    <span class="log-entry">> Region: af-south-1</span>
-                    <span class="log-entry">> Cinexa Sync... [100%]</span>
-                    <span class="log-entry">> Newsroom SSL... [READY]</span>
-                    <span class="log-entry" style="margin-top: 15px; color: #fff; font-weight: 700;">SYSTEM READY</span>
+                <div style="padding: 40px; text-align: center; background: white;">
+                    <p style="font-size: 1.1rem; color: #334155; margin-bottom: 30px;">Celebrating with our community. Wishing our partners and stakeholders a blessed and prosperous season.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 20px;">
+                        <a href="https://cinexaplus.com" class="launch-btn" style="text-align: center;">Cinexa Plus <span class="status-badge">LIVE</span></a>
+                        <a href="https://news.hemafrica.com" class="launch-btn" style="text-align: center;">Newsroom <span class="status-badge">LIVE</span></a>
+                        <div class="launch-btn" style="opacity: 0.6; cursor: default;">Pinglo <span class="status-badge">SOON</span></div>
+                    </div>
                 </div>
+                <div style="padding: 20px 40px; background: #f8fafc; text-align: right;">
+                    <button onclick="closeMigration()" style="background: var(--deep); color: white; border: none; padding: 12px 30px; font-weight: 800; cursor: pointer; text-transform: uppercase;">Continue</button>
+                </div>
+            `;
+        } else {
+            // Your Original Migration Popup...
+        }
+    });
+</script>
             </div>
             <div style="padding: 25px 40px; background: #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
                 <p style="font-size: 0.7rem; font-weight: 800; color: var(--text-muted);">© 2026 HEM AFRICA GROUP</p>
