@@ -2,29 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Terms of Service | HEM Africa Group</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Hem V2 Logo.jpeg" />
+    <title>Terms of Service | H.E.M Africa Group</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #003399;
+            --deep: #001f5c;
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --border: #e1e8f0;
+            --text: #1f2937;
+            --muted: #64748b;
+            --glass: rgba(255,255,255,0.9);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); line-height: 1.8; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .nav { position: sticky; top: 0; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.05rem; text-transform: uppercase; color: #000; text-decoration: none; }
+        .logo span { color: var(--accent); font-weight: 300; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #1f2937; }
+        .hero { max-width: 900px; margin: 60px auto 40px; padding: 0 2rem; text-align: center; }
+        .hero .eyebrow { font-family: 'Space Mono', monospace; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 18px; }
+        .hero h1 { font-size: 3rem; color: var(--deep); line-height: 1.05; }
+        .hero p { font-size: 1rem; color: var(--muted); margin-top: 18px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .content { max-width: 1000px; margin: 0 auto 80px; padding: 0 2rem; }
+        .content h2 { margin-top: 40px; font-size: 1.6rem; color: var(--deep); }
+        .content p { margin-top: 18px; color: var(--muted); }
+        .content ul { margin-top: 18px; padding-left: 20px; color: var(--muted); }
+        .content li { margin-bottom: 12px; }
+        .content strong { color: var(--deep); }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 32px; margin-top: 40px; box-shadow: 0 18px 40px rgba(15, 23, 42, 0.05); }
+        .card p { margin: 0; }
+        .footer { border-top: 1px solid var(--border); padding: 40px 2rem 60px; text-align: center; color: var(--muted); font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .nav-container { padding: 1rem 1.5rem; }
+            .hero { margin: 40px auto 30px; }
+            .hero h1 { font-size: 2.25rem; }
+            .content { padding: 0 1.5rem; }
+            .content h2 { font-size: 1.4rem; }
+            .card { padding: 24px; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="logo">HEM AFRICA<span>GROUP</span></a>
+            <a href="index.html" class="logo">H.E.M <span>AFRICA</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Divisions</a>
+                <a href="careers.html">Careers</a>
+                <a href="contact.html">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <section class="section" style="max-width: 800px;">
-        <span class="card-label">Governance</span>
-        <h1 style="color: var(--deep); font-size: 2.5rem; margin-bottom: 30px;">Terms of Service</h1>
-        
-        <h3>1. Jurisdiction</h3>
-        <p style="margin-bottom: 20px;">These terms are governed by the laws of the <strong>Federal Republic of Nigeria</strong> and the <strong>State of New York</strong>. Any disputes shall be settled via binding arbitration in Lagos or New York City.</p>
-
-        <h3>2. Subsidiary Terms</h3>
-        <p style="margin-bottom: 20px;">Use of <strong>Pinglo</strong>, <strong>Cinexa</strong>, and <strong>HMN</strong> requires adherence to our Acceptable Use Policy. Unauthorized scraping of <strong>Ontrixa AI</strong> models is strictly prohibited.</p>
-
-        <div style="background: var(--light-bg); padding: 20px; border-left: 4px solid var(--primary); margin-top: 40px;">
-            <p style="font-size: 0.9rem; color: var(--muted);">© 2026 HEM Africa Group. All corporate assets and intellectual property are registered under H.E.M. parental oversight.</p>
-        </div>
+    <section class="hero">
+        <span class="eyebrow">Terms of Service</span>
+        <h1>H.E.M Africa Terms & Conditions</h1>
+        <p>These terms apply to all users of H.E.M Africa digital services, platforms, and affiliated products. Please read carefully before accessing or using our services.</p>
     </section>
+
+    <main class="content">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By using any H.E.M Africa website or service, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please do not access or use our services.</p>
+
+        <h2>2. Services Covered</h2>
+        <p>These terms apply to H.E.M Africa, H.E.M News, H.E.M Finance, Cinexa+, Pinglo, and any additional services which are offered under the H.E.M Africa ecosystem.</p>
+
+        <h2>3. User Conduct</h2>
+        <p>Users must not engage in unlawful behavior, abuse our services, scrape data without permission, reverse-engineer our platforms, or infringe intellectual property rights. H.E.M Africa reserves the right to suspend or terminate accounts for violations.</p>
+
+        <h2>4. Intellectual Property</h2>
+        <p>All content, trademarks, logos, and software on H.E.M Africa properties are owned by H.E.M Africa Group or licensed partners. Unauthorized use is prohibited.</p>
+
+        <h2>5. Disclaimers and Liability</h2>
+        <p>H.E.M Africa provides services on an "as-is" basis. We are not liable for indirect damages, loss of profits, or interruption of service. Our maximum liability is limited to the amount paid by the user for the applicable service.</p>
+
+        <h2>6. Governing Law</h2>
+        <p>These terms are governed by the laws of Nigeria and, where applicable, the laws of the United States. Disputes may be resolved in Lagos, Nigeria or New York City, depending on the contractual relationship.</p>
+
+        <div class="card">
+            <h2>7. Updates & Changes</h2>
+            <p>H.E.M Africa may update these Terms at any time. Continued use of our services after changes are posted constitutes acceptance of those changes.</p>
+        </div>
+
+        <h2>8. Contact</h2>
+        <p>Questions regarding these terms should be sent to <a href="mailto:contact@hemafrica.com">contact@hemafrica.com</a>.</p>
+    </main>
+
+    <footer class="footer">
+        © 2026 H.E.M Africa Group. All Rights Reserved.
+    </footer>
 </body>
 </html>
+

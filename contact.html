@@ -3,43 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Hem V2 Logo.jpeg" />
     <title>Contact Us | H.E.M. Africa</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --primary: #003399; --deep: #001f5c; --bg: #ffffff; --border: #e1e8f0; --muted: #5f6368; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); }
-        .nav { border-bottom: 1px solid var(--border); padding: 1rem 0; }
-        .container { max-width: 1100px; margin: 80px auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-        .info h1 { font-size: 3rem; color: var(--deep); margin-bottom: 20px; }
-        .contact-method { margin-bottom: 40px; }
-        .label { font-weight: 800; color: var(--primary); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px; display: block; }
-        .value { font-size: 1.1rem; font-weight: 500; text-decoration: none; color: inherit; }
-        .btn-wa { display: inline-block; padding: 15px 30px; background: #25D366; color: white; text-decoration: none; font-weight: 700; border-radius: 4px; margin-top: 20px; }
-        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 4px; background: var(--light-bg); }
+        /* Core Variables & Reset */
+        :root {
+            --accent: #003399;
+            --deep: #001f5c;
+            --bg-dark: #050b14;
+            --border: #e1e8f0;
+            --text-main: #334155;
+            --text-muted: #5f6368;
+            --glass: rgba(255, 255, 255, 0.95);
+            --wa-green: #25D366;
+            --form-bg: #f8fafc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: #ffffff; color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* Loader */
+        #global-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s; }
+        .loader-text { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--accent); font-weight: 700; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* Navigation */
+        .nav { position: sticky; top: 0; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; padding: 1.2rem 2rem; align-items: center; flex-wrap: wrap; }
+        .logo { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; text-decoration: none; color: #000; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent); font-weight: 300; }
+        
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #1a1a1b; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Mobile Nav Toggle */
+        .nav-toggle { display: none; border: none; background: transparent; cursor: pointer; width: 30px; height: 24px; flex-direction: column; justify-content: space-between; align-items: center; }
+        .nav-toggle span { display: block; width: 100%; height: 3px; border-radius: 2px; background: #1a1a1b; transition: 0.3s; }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
+
+        /* Contact Layout */
+        .contact-hero { background: radial-gradient(circle at 0% 0%, #f0f4ff, #ffffff); padding: 60px 2rem 0; text-align: center; }
+        .contact-container { max-width: 1200px; margin: 60px auto 100px; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+        
+        /* Left Side: Info */
+        .info-panel { padding-right: 20px; }
+        .info-panel h1 { font-size: 3.5rem; color: var(--deep); margin-bottom: 15px; font-weight: 900; letter-spacing: -1.5px; line-height: 1; }
+        .info-panel > p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 50px; line-height: 1.8; }
+        
+        .contact-method { margin-bottom: 35px; border-left: 3px solid var(--border); padding-left: 20px; transition: border-color 0.3s; }
+        .contact-method:hover { border-color: var(--accent); }
+        .label { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
+        .value { font-size: 1.2rem; font-weight: 600; text-decoration: none; color: var(--deep); transition: color 0.3s; }
+        .value:hover { color: var(--accent); }
+
+        /* Custom WhatsApp Button */
+        .btn-wa { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; background: var(--wa-green); color: white; text-decoration: none; font-weight: 700; font-size: 0.95rem; border-radius: 8px; margin-top: 20px; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); }
+        .btn-wa:hover { background: #1ebc5b; transform: translateY(-3px); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3); }
+
+        /* Right Side: Form Box */
+        .form-box { background: #ffffff; padding: 50px; border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04); border: 1px solid var(--border); }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--deep); margin-bottom: 8px; }
+        
+        input, textarea { width: 100%; padding: 16px 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--form-bg); font-size: 1rem; color: var(--text-main); transition: all 0.3s ease; outline: none; }
+        input::placeholder, textarea::placeholder { color: #a0aec0; }
+        input:focus, textarea:focus { background: #fff; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0, 51, 153, 0.08); }
+        
+        button.submit-btn { width: 100%; padding: 18px; background: var(--deep); color: #fff; border: none; border-radius: 8px; font-weight: 800; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; margin-top: 10px; }
+        button.submit-btn:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 51, 153, 0.15); }
+
+        /* Footer */
+        .simple-footer { text-align: center; padding: 40px 2rem; border-top: 1px solid var(--border); font-size: 0.9rem; color: #5f6368; }
+
+        /* Responsive Media Queries */
+        @media (max-width: 992px) {
+            .contact-container { grid-template-columns: 1fr; gap: 50px; }
+            .info-panel { padding-right: 0; text-align: center; }
+            .contact-method { border-left: none; padding-left: 0; display: flex; flex-direction: column; align-items: center; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            .nav-links { position: absolute; top: 100%; left: 0; right: 0; display: none; flex-direction: column; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); padding: 2rem; border-bottom: 1px solid var(--border); text-align: left; align-items: flex-start; }
+            .nav-links.show { display: flex; }
+            .info-panel h1 { font-size: 2.5rem; }
+            .contact-container { margin-top: 40px; padding: 0 1.5rem; }
+            .form-box { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
-    <nav class="nav"><div style="max-width: 1100px; margin: 0 auto; padding: 0 2rem;"><a href="#" style="font-weight: 900; text-decoration: none; color: #000;">H.E.M. <span style="color: var(--primary);">AFRICA</span></a></div></nav>
-    <div class="container">
-        <div class="info">
-            <h1>Get in touch.</h1>
-            <p style="color: var(--muted); margin-bottom: 40px;">Connect with our corporate headquarters or technical support teams.</p>
-            <div class="contact-method">
-                <span class="label">General Inquiries</span>
-                <a href="mailto:info@hemafrica.com" class="value">info@hemafrica.com</a>
-            </div>
-            <div class="contact-method">
-                <span class="label">Talent & Careers</span>
-                <a href="mailto:careers@hemafrica.com" class="value">careers@hemafrica.com</a>
-            </div>
-            <a href="https://wa.me/2349046199743" class="btn-wa">WhatsApp Support</a>
-        </div>
-        <div class="form-box">
-            <input type="text" placeholder="Full Name">
-            <input type="email" placeholder="Email Address">
-            <textarea rows="5" placeholder="How can we help?"></textarea>
-            <button style="width: 100%; padding: 15px; background: var(--primary); color: #fff; border: none; font-weight: 700; cursor: pointer;">SEND MESSAGE</button>
-        </div>
+
+    <!-- Loader -->
+    <div id="global-loader">
+        <div class="loader-text">INITIALIZING COMMS...</div>
     </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">H.E.M. <span>AFRICA Group </span></a>
+            <button class="nav-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="contact-container">
+            
+            <!-- Left Info Panel -->
+            <div class="info-panel">
+                <h1>Get in touch.</h1>
+                <p>Connect with our corporate headquarters or technical support teams. We aim to respond to all inquiries within 24 hours.</p>
+                
+                <div class="contact-method">
+                    <span class="label">General Inquiries</span>
+                    <a href="mailto:info@hemafrica.com" class="value">info@hemafrica.com</a>
+                </div>
+                
+                <div class="contact-method">
+                    <span class="label">Talent & Careers</span>
+                    <a href="mailto:careers@hemafrica.com" class="value">careers@hemafrica.com</a>
+                </div>
+                
+                <a href="https://wa.me/2349046199743" class="btn-wa" target="_blank" rel="noopener noreferrer">
+                    <!-- WhatsApp SVG Icon -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.031 0C5.385 0 0 5.384 0 12.03c0 2.126.554 4.195 1.604 6.012L.15 23.491l5.59-1.465a12.028 12.028 0 006.29 1.761h.005c6.645 0 12.03-5.384 12.03-12.03 0-3.218-1.254-6.244-3.53-8.52A11.968 11.968 0 0012.031 0zm0 21.785h-.004a9.98 9.98 0 01-5.086-1.385l-.364-.216-3.784.992.997-3.69-.237-.377a9.984 9.984 0 01-1.528-5.326c0-5.513 4.488-10.001 10.006-10.001 2.671 0 5.18 1.04 7.067 2.929A9.957 9.957 0 0122.036 12.03c0 5.513-4.488 10.002-10.005 10.002zm5.492-7.502c-.302-.151-1.784-.881-2.062-.981-.277-.101-.479-.151-.68.151-.202.302-.781.981-.958 1.183-.176.202-.353.227-.655.076-.302-.151-1.275-.471-2.428-1.503-.896-.803-1.501-1.794-1.677-2.096-.176-.302-.019-.465.132-.616.136-.136.302-.352.453-.529.151-.176.202-.302.302-.504.101-.202.05-.378-.025-.529-.076-.151-.68-1.642-.932-2.247-.245-.589-.494-.509-.68-.518-.176-.008-.378-.01-.579-.01-.202 0-.529.076-.806.378-.277.302-1.058 1.034-1.058 2.52s1.083 2.921 1.234 3.123c.151.202 2.128 3.25 5.155 4.556.719.31 1.28.495 1.718.634.721.23 1.377.197 1.895.12.58-.086 1.784-.73 2.036-1.436.252-.706.252-1.31.176-1.437-.075-.126-.277-.202-.579-.353z"/>
+                    </svg>
+                    WhatsApp Support
+                </a>
+            </div>
+
+            <!-- Right Form Panel -->
+            <div class="form-box">
+                <form onsubmit="event.preventDefault(); alert('Message sending simulation complete.');">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Jane Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="jane@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">How can we help?</label>
+                        <textarea id="message" rows="5" placeholder="Tell us about your inquiry..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="simple-footer">
+        &copy; 2026 H.E.M. Africa Group. All Rights Reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Loader
+            const loader = document.getElementById("global-loader");
+            setTimeout(() => {
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 500);
+            }, 600);
+
+            // Mobile Menu
+            const menuBtn = document.getElementById("mobile-menu-btn");
+            const navMenu = document.getElementById("nav-menu");
+            
+            menuBtn.addEventListener("click", () => {
+                menuBtn.classList.toggle("open");
+                navMenu.classList.toggle("show");
+            });
+        });
+    </script>
 </body>
 </html>
+

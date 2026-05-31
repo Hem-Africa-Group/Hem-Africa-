@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Hem V2 Logo.jpeg" />
     <title>Investment | H.E.M. Africa Group</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
     <style>
@@ -13,6 +15,12 @@
         .stat-card h3 { font-size: 2.5rem; color: var(--accent); font-weight: 800; }
         .stat-card p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; }
         .btn-deck { background: var(--deep); color: white; padding: 20px 40px; text-decoration: none; font-weight: 800; font-size: 0.8rem; display: inline-block; }
+        @media (max-width: 900px) {
+            body { padding: 30px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero-invest { padding-left: 20px; }
+            .btn-deck { width: 100%; text-align: center; }
+        }
     </style>
 </head>
 <body>

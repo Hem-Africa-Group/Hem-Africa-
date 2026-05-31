@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Hem V2 Logo.jpeg" />
     <title>HEM Africa Group | The Future of Africa's Technology </title>
         <link rel="icon" href="./Hem V2 Logo.jpeg" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -28,7 +29,8 @@
             background: radial-gradient(circle at center, #646c79 0%, #02060d 100%);
             display: none; align-items: center; justify-content: center;
             z-index: 10000; backdrop-filter: blur(15px);
-            transition: opacity 0.6s ease;
+            transition: opacity 0.3s ease;
+            opacity: 1;
         }
         .migration-card {
             background: #fff; max-width: 850px; width: 95%; border-radius: 2px;
@@ -67,9 +69,9 @@
         .nav-toggle.open span:nth-child(2) { opacity: 0; }
         .nav-toggle.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
 
-        .ticker-wrap { background: var(--deep); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; }
-        .ticker { display: inline-block; animation: ticker 50s linear infinite; font-weight: 800; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
-        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .ticker-wrap { background: var(--deep); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; position: relative; }
+        .ticker { display: inline-flex; white-space: nowrap; animation: ticker 40s linear infinite; font-weight: 800; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; will-change: transform; }
+        @keyframes ticker { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100vw); } }
 
         .hero { background: radial-gradient(circle at 70% 30%, #f0f4ff, #ffffff); padding: 140px 2rem 100px; text-align: center; }
         .hero h1 { font-size: 5rem; font-weight: 800; color: var(--deep); line-height: 1; letter-spacing: -2px; margin: 0 auto; max-width: 900px; }
@@ -77,6 +79,15 @@
 
         .section { max-width: 1400px; margin: 0 auto; padding: 100px 2rem; }
         .section-header h2 { margin-top: 20px; font-size: 3rem; line-height: 1.05; }
+        .hiring-panel { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; max-width: 1200px; margin: 0 auto; padding: 50px; background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%); border: 1px solid rgba(0, 51, 153, 0.12); border-radius: 32px; box-shadow: 0 24px 80px rgba(0,0,0,0.08); }
+        .hiring-copy h2 { font-size: 3rem; line-height: 1.05; margin: 20px 0 24px; color: var(--deep); }
+        .hiring-copy p { font-size: 1.05rem; color: #334155; line-height: 1.8; max-width: 700px; margin-bottom: 30px; }
+        .hiring-copy .primary-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--accent); color: white; text-decoration: none; font-weight: 800; padding: 16px 34px; border-radius: 999px; transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease; }
+        .hiring-copy .primary-btn:hover { background: var(--deep); transform: translateY(-2px); box-shadow: 0 20px 35px rgba(0,51,153,0.18); }
+        .hiring-features { display: grid; gap: 18px; }
+        .feature-card { background: white; border: 1px solid var(--border); border-radius: 22px; padding: 28px; box-shadow: 0 18px 40px rgba(0,0,0,0.06); }
+        .feature-card h3 { font-size: 1.25rem; margin-bottom: 14px; color: var(--deep); }
+        .feature-card p { font-size: 0.98rem; line-height: 1.8; color: #64748b; }
         .grid-primary { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; background: var(--border); border: 1px solid var(--border); }
         .data-card { background: #fff; padding: 32px; min-height: auto; display: flex; flex-direction: column; justify-content: space-between; text-decoration: none; color: inherit; transition: 0.4s; }
         .data-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); z-index: 2; }
@@ -102,12 +113,81 @@
         .nav-links { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: flex-end; }
         .nav-links a { text-decoration: none; color: #1a1a1b; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
 
-        .ticker-wrap { background: var(--deep); color: white; padding: 10px 2rem; overflow: hidden; white-space: nowrap; }
-        .ticker { display: inline-block; animation: ticker 50s linear infinite; font-weight: 800; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
-
         .migration-card { background: #fff; max-width: 650px; width: 95%; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.18); display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.15); }
         .pop-header { background: var(--deep); color: white; padding: 36px 28px; text-align: center; border-bottom: 4px solid var(--accent); }
-        .pop-header h2 { font-size: 2.4rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1.05; }
+        .pop-header h2 { font-size: 2.4rem; font-weight: 900; letter-spacing: -1px; line-height: 1.05; }
+        
+        .popup-body { padding: 40px 32px; position: relative; }
+        .popup-message { color: #1a1a1b; }
+        .popup-message p { font-size: 1rem; line-height: 1.7; color: #334155; margin-bottom: 12px; }
+        .popup-message p strong { color: var(--deep); font-weight: 700; }
+        
+        .ecosystem-link { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            padding: 14px 16px; 
+            background: #f8fafc; 
+            border: 1px solid #e2e8f0;
+            border-radius: 10px; 
+            text-decoration: none; 
+            color: var(--deep); 
+            margin-bottom: 10px;
+            transition: 0.3s ease;
+            border-left: 4px solid var(--accent);
+        }
+        .ecosystem-link:hover { 
+            background: var(--accent); 
+            color: white;
+            border-left-color: white;
+            transform: translateX(4px);
+        }
+        .ecosystem-link:hover .link-check { color: white; }
+        .link-check { 
+            color: #00b894; 
+            font-weight: bold; 
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .link-text { 
+            font-size: 0.95rem; 
+            font-weight: 600;
+        }
+        
+        .close-popup-btn { 
+            position: absolute; 
+            top: 12px; 
+            right: 12px; 
+            background: transparent; 
+            border: none; 
+            font-size: 2rem; 
+            cursor: pointer; 
+            color: #94a3b8; 
+            padding: 4px 8px;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .close-popup-btn:hover { color: var(--accent); }
+        
+        .explore-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: 0.3s ease;
+        }
+        .explore-btn:hover {
+            background: var(--deep);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 51, 153, 0.2);
+        }
+        
         .pop-header p { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--neon); margin-top: 10px; letter-spacing: 3px; text-transform: uppercase; }
         .sys-logs { padding: 40px; background: #050b14; color: white; font-family: 'Space Mono', monospace; }
         .log-entry { font-size: 0.75rem; margin-bottom: 8px; display: block; color: var(--neon); }
@@ -150,16 +230,61 @@
             .migration-card { width: 100%; margin: 0 12px; }
             .pop-header { padding: 28px 20px; }
             .pop-header h2 { font-size: 1.9rem; }
-            .launch-btn { flex-direction: column; align-items: stretch; text-align: left; }
-            .launch-btn span { margin-top: 8px; }
+            .popup-body { padding: 32px 20px; }
+            .popup-message p { font-size: 0.95rem; }
+            .ecosystem-link { padding: 12px 14px; font-size: 0.9rem; }
+            .link-text { font-size: 0.9rem; }
+            .close-popup-btn { font-size: 1.6rem; }
+            .explore-btn { padding: 10px 20px; font-size: 0.9rem; }
+            .hiring-panel { grid-template-columns: 1fr; padding: 32px; }
+            .hiring-features { gap: 16px; }
+            .hiring-copy .primary-btn { width: 100%; }
+        }
+        
+        @media (max-width: 480px) {
+            .pop-header h2 { font-size: 1.6rem; }
+            .popup-body { padding: 24px 16px; }
+            .popup-message p { font-size: 0.9rem; }
+            .ecosystem-link { padding: 10px 12px; margin-bottom: 8px; }
+            .link-check { font-size: 1rem; }
+            .link-text { font-size: 0.85rem; }
+            .migration-card { margin: 0 8px; }
+            .explore-btn { padding: 9px 18px; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="migration-popup" class="migration-overlay">
-        <div class="migration-card" id="popup-content">
-            <!-- Existing popup content is preserved here -->
+    <!-- Ecosystem Announcement Popup -->
+    <div id="ecosystem-popup" class="migration-overlay">
+        <div class="migration-card" id="ecosystem-content">
+            <div class="pop-header">
+                <h2>Building the Future of Africa</h2>
+            </div>
+            <div class="popup-body">
+                <div class="popup-message">
+                    <p><strong>H.E.M Africa</strong> is creating the next generation of African digital platforms across news, finance, entertainment, AI, and social technology.</p>
+                    <p style="margin-top: 16px; margin-bottom: 20px;"><strong>Our growing ecosystem is now live:</strong></p>
+                    
+                    <a href="https://news.hemafrica.com" class="ecosystem-link">
+                        <span class="link-check">✅</span>
+                        <span class="link-text"><strong>News</strong> — news.hemafrica.com</span>
+                    </a>
+                    <a href="https://finance.hemafrica.com" class="ecosystem-link">
+                        <span class="link-check">✅</span>
+                        <span class="link-text"><strong>Finance</strong> — finance.hemafrica.com</span>
+                    </a>
+                    <a href="https://cinexaplus.hemafrica.com" class="ecosystem-link">
+                        <span class="link-check">✅</span>
+                        <span class="link-text"><strong>Cinexa+</strong> — cinexaplus.hemafrica.com</span>
+                    </a>
+                    
+                    <p style="margin-top: 24px; color: #5f6368; line-height: 1.6;">More innovations are coming soon as we continue our mission to empower Africa through technology.</p>
+                    
+                    <button id="explore-ecosystem-btn" class="explore-btn">Explore Ecosystem →</button>
+                </div>
+                <button id="close-ecosystem-popup" class="close-popup-btn" aria-label="Close popup">×</button>
+            </div>
         </div>
     </div>
 
@@ -175,18 +300,18 @@
             </button>
             <div class="nav-links">
                 <a href="services.html">Divisions</a>
-                <a href="status.html">Status</a>
+                <a href="about.html">About</a>
                 <a href="https://news.hemafrica.com">Newsroom</a>
                 <a href="board.html">Leadership</a>
             </div>
         </div>
     </nav>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-          AWS INFRASTRUCTURE MIGRATION: In Progress • CINEXA PLUS: LIVE • H.E.M FINANCE: LIVE • HEM NEWS NETWORK: DEPLOYED • SCALE: Eu-2 London HUB • PINGLO: IN DEVELOPMENT •
-        </div>
-    </div>
+   <div class="ticker-wrap">
+  <div class="ticker">
+    NEWS.HEMAFRICA.COM: LIVE • FINANCE.HEMAFRICA.COM: ACTIVE DATA STREAM • CINEXA+: STREAMING ENGINE ONLINE • PINGLO: IN DEVELOPMENT • AFRICAN TECH INVESTMENT FLOW: INCREASING • GLOBAL EDGE NETWORK EXPANSION: PHASE 2 ACTIVE • H.E.M SYSTEM STABILITY: 99.9% •
+  </div>
+</div>
 
     <header class="hero">
         <span class="card-label">Hustle Excellence Movement</span>
@@ -243,6 +368,35 @@
         </div>
     </section>
 
+    <section class="section hiring-section">
+        <div class="section-header" style="margin-bottom: 50px;">
+            <span class="card-label">We’re Hiring</span>
+            <h2 style="font-size: 3rem; color: var(--deep);">Join the movement and build Africa’s digital future</h2>
+            <div style="width: 40px; height: 3px; background: var(--accent); margin-top: 30px;"></div>
+        </div>
+        <div class="hiring-panel">
+            <div class="hiring-copy">
+                <p>H.E.M Africa is growing fast and hiring ambitious builders, designers, engineers, and storytellers. Join us to build products that power news, finance, entertainment, social platforms across Africa.</p>
+                <p>Work with a mission-driven team that delivers impact through bold technology, smart design, and strong community focus.</p>
+                <a href="careers.html" class="primary-btn">Explore Careers →</a>
+            </div>
+            <div class="hiring-features">
+                <div class="feature-card">
+                    <h3>Impact at scale</h3>
+                    <p>Create products used by millions of Africans across news, finance, entertainment, and social technology.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Fast growth</h3>
+                    <p>Learn quickly in a nimble team that moves with ambition, speed, and consistent execution.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Purpose-led culture</h3>
+                    <p>Join a community that values hustle, excellence, innovation, and digital inclusion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="ceo-section">
         <div class="ceo-container">
             <div class="section-header">
@@ -274,7 +428,7 @@
             </div>
             <div class="footer-links">
                 <h4>Divisions</h4>
-                <a href="#">Pinglo Social</a><a href="cinexaplus.com">Cinexa Plus</a><a href="https://finance.hemafrica.com">H.E.M Finance</a>
+                <a href="pinglo.html">Pinglo Social</a><a href="cinexaplus.html">Cinexa Plus</a><a href="https://finance.hemafrica.com">H.E.M Finance</a>
             </div>
             <div class="footer-links">
                 <h4>Corporate</h4>
@@ -282,7 +436,7 @@
             </div>
             <div class="footer-links">
                 <h4>Legal</h4>
-                <a href="#">Terms</a><a href="#">Privacy</a>
+                <a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
             </div>
         </div>
         <div style="max-width: 1400px; margin: 60px auto 0; border-top: 1px solid var(--border); padding-top: 40px; font-size: 0.75rem; color: #94a3b8; display: flex; justify-content: space-between;">
@@ -299,6 +453,61 @@
             }, 800);
         });
 
+        // Ecosystem Popup Handler
+        function initEcosystemPopup() {
+            const popup = document.getElementById('ecosystem-popup');
+            const closeBtn = document.getElementById('close-ecosystem-popup');
+            const popupShownKey = 'ecosystem-popup-shown';
+            const lastShownTime = localStorage.getItem(popupShownKey);
+            const now = Date.now();
+            const oneDay = 24 * 60 * 60 * 1000;
+
+            // Show popup if it hasn't been shown in the last 24 hours
+            if (!lastShownTime || (now - parseInt(lastShownTime)) > oneDay) {
+                setTimeout(() => {
+                    popup.style.display = 'flex';
+                    localStorage.setItem(popupShownKey, now.toString());
+                }, 1500);
+            }
+
+            // Close button handler
+            closeBtn.addEventListener('click', () => {
+                popup.style.opacity = '0';
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                    popup.style.opacity = '1';
+                }, 300);
+            });
+
+            // Close on background click (but not on card click)
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.style.opacity = '0';
+                    setTimeout(() => {
+                        popup.style.display = 'none';
+                        popup.style.opacity = '1';
+                    }, 300);
+                }
+            });
+        }
+
+        // Initialize popup when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initEcosystemPopup);
+        } else {
+            initEcosystemPopup();
+        }
+
+        // Explore button handler
+        const exploreBtn = document.getElementById('explore-ecosystem-btn');
+        if (exploreBtn) {
+            exploreBtn.addEventListener('click', () => {
+                document.getElementById('ecosystem-popup').style.display = 'none';
+                document.getElementById('divisions').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+        // Nav toggle handler
         document.addEventListener('DOMContentLoaded', () => {
             const toggle = document.querySelector('.nav-toggle');
             const menu = document.querySelector('.nav-links');
@@ -311,11 +520,7 @@
                 });
             }
         });
-
-        function closeMigration() {
-            document.getElementById('migration-popup').style.opacity = '0';
-            setTimeout(() => { document.getElementById('migration-popup').style.display = 'none'; }, 600);
-        }
     </script>
 </body>
 </html>
+

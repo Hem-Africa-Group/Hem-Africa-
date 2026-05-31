@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Hem V2 Logo.jpeg" />
     <title>Newsroom | H.E.M. Africa</title>
     <style>
         :root {
@@ -27,22 +28,46 @@
         .logo span { color: var(--primary); font-weight: 300; }
         .nav-links a { text-decoration: none; color: var(--text); font-size: 0.8rem; font-weight: 600; margin-left: 2rem; text-transform: uppercase; }
 
-        .hero { background: radial-gradient(circle at top right, #f0f4ff, #fff); text-align: center; padding: 100px 2rem; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; color: var(--deep); margin-bottom: 15px; letter-spacing: -1px; }
-        
-        .section { max-width: 1200px; margin: 0 auto; padding: 80px 2rem; }
-        .grid-press { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; }
-        
-        .press-item { padding: 40px 0; border-bottom: 1px solid var(--border); }
-        .status-tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
-        .tag-live { background: #e6fffa; color: #2c7a7b; border: 1px solid #b2f5ea; }
-        .tag-upcoming { background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; }
-        
-        .press-title { font-size: 1.5rem; font-weight: 800; color: var(--deep); text-decoration: none; line-height: 1.2; display: block; }
-        .press-title:hover { color: var(--primary); }
+        .hero { background: radial-gradient(circle at top right, #eef4ff, #ffffff); text-align: center; padding: 120px 2rem 90px; }
+        .hero .card-label { display: inline-flex; justify-content: center; padding: 10px 18px; border-radius: 999px; background: var(--primary); color: white; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; color: var(--deep); margin-bottom: 20px; letter-spacing: -1px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .hero p { max-width: 700px; margin: 0 auto; color: #475569; font-size: 1.03rem; line-height: 1.75; }
 
-        .asset-box { background: var(--light-bg); padding: 40px; border: 1px solid var(--border); }
-        .card-label { font-size: 0.7rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .section { max-width: 1200px; margin: 0 auto; padding: 80px 2rem 100px; }
+        .grid-press { display: grid; grid-template-columns: 2.2fr 1fr; gap: 50px; align-items: start; }
+        .news-list { display: grid; gap: 24px; }
+
+        .press-item { background: #ffffff; padding: 32px; border: 1px solid var(--border); border-radius: 26px; box-shadow: 0 24px 50px rgba(15, 23, 42, 0.07); }
+        .press-item + .press-item { margin-top: 0; }
+        .status-tag { display: inline-flex; align-items: center; justify-content: center; padding: 6px 14px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 18px; letter-spacing: 0.06em; }
+        .tag-live { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+        .tag-upcoming { background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe; }
+
+        .press-title { font-size: 1.6rem; font-weight: 800; color: var(--deep); text-decoration: none; line-height: 1.25; display: block; margin-bottom: 16px; }
+        .press-title:hover { color: var(--primary); }
+        .press-item p { margin-top: 0; color: var(--muted); }
+        .press-item ul { margin-top: 16px; padding-left: 20px; color: var(--muted); }
+        .press-item li { margin-bottom: 12px; }
+
+        .asset-box { background: #ffffff; padding: 32px; border: 1px solid var(--border); border-radius: 26px; box-shadow: 0 22px 48px rgba(15, 23, 42, 0.06); }
+        .asset-box h3 { font-size: 1.2rem; margin-bottom: 18px; color: var(--deep); }
+        .asset-box p { color: var(--muted); line-height: 1.8; margin-bottom: 26px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 14px 18px; border-radius: 999px; border: 1px solid transparent; background: var(--primary); color: white; text-decoration: none; font-weight: 800; transition: transform 0.25s ease, background 0.25s ease; }
+        .btn:hover { background: #001f5c; transform: translateY(-1px); }
+        .asset-box .card-label { margin-bottom: 12px; }
+
+        @media (max-width: 992px) {
+            .grid-press { grid-template-columns: 1fr; }
+            .section { padding: 60px 1.5rem 80px; }
+            .hero { padding: 90px 1.5rem 70px; }
+        }
+        @media (max-width: 680px) {
+            .nav-container { padding: 1rem 1.25rem; }
+            .hero h1 { font-size: 2.55rem; }
+            .press-item { padding: 24px; }
+            .asset-box { padding: 24px; }
+            .btn { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -65,26 +90,79 @@
         <h1>Official Newsroom</h1>
         <p>Real-time updates on H.E.M. Africa's digital expansion and infrastructure milestones.</p>
     </header>
-
+    
     <div class="section">
         <div class="grid-press">
             <div class="news-list">
                 <div class="press-item">
-                    <span class="status-tag tag-live">Live Now</span>
-                    <a href="https://news.hemafrica.com" class="press-title">H.E.M. Media Network Formally Launches News.HEMAfrica.com</a>
-                    <p style="color: var(--muted); margin-top: 15px;">A specialized digital destination for business, tech, and cultural insights across the continent. Built on our new high-standard architecture.</p>
+                    <span class="status-tag tag-live">Live Update</span>
+                    <a href="#" class="press-title">1. Multi-Platform Digital Launches</a>
+                    <p style="color: var(--muted); margin-top: 15px;">H.E.M Africa has successfully launched and activated multiple digital platforms, including:</p>
+                    <ul style="margin-top: 16px; color: var(--muted); padding-left: 20px;">
+                        <li><strong>H.E.M News</strong> — a live newsroom delivering structured updates and announcements</li>
+                        <li><strong>H.E.M Finance</strong> — a financial intelligence platform focused on market and economic information</li>
+                        <li><strong>Cinexa+</strong> — a streaming and entertainment platform concept now publicly introduced</li>
+                        <li><strong>H.E.M Website Network</strong> — a unified web presence across multiple subdomains</li>
+                    </ul>
                 </div>
 
                 <div class="press-item">
-                    <span class="status-tag tag-upcoming">Upcoming</span>
-                    <a href="#" class="press-title">Cinexa Streaming Platform Set for Q2 2026 Global Deployment</a>
-                    <p style="color: var(--muted); margin-top: 15px;">The next generation of high-fidelity entertainment. Cinexa will offer a premium streaming experience with a glassmorphism-inspired interface.</p>
+                    <span class="status-tag tag-live">Infrastructure</span>
+                    <a href="#" class="press-title">2. Live Digital Infrastructure</a>
+                    <p style="color: var(--muted); margin-top: 15px;">The H.E.M ecosystem is no longer just an idea — it now includes:</p>
+                    <ul style="margin-top: 16px; color: var(--muted); padding-left: 20px;">
+                        <li>Fully designed and deployed websites</li>
+                        <li>Functional navigation between platforms</li>
+                        <li>Branded corporate identity system (color, layout, tone)</li>
+                        <li>Responsive web interfaces optimized for desktop and mobile</li>
+                    </ul>
                 </div>
 
                 <div class="press-item">
-                    <span class="status-tag tag-live">System Update</span>
-                    <a href="#" class="press-title">H.E.M. Africa Rolls Out Refreshed Website UI Across All Subdomains</a>
-                    <p style="color: var(--muted); margin-top: 15px;">Standardizing our visual identity with the Royal Blue and Deep Navy palette to enhance user experience for all stakeholders.</p>
+                    <span class="status-tag tag-live">Brand</span>
+                    <a href="#" class="press-title">3. Brand Identity & Positioning</a>
+                    <p style="color: var(--muted); margin-top: 15px;">H.E.M Africa has established itself as:</p>
+                    <ul style="margin-top: 16px; color: var(--muted); padding-left: 20px;">
+                        <li>A technology-driven African media and digital company</li>
+                        <li>A structured organization with a clear corporate tone</li>
+                        <li>A brand focused on information, finance, and digital content delivery</li>
+                    </ul>
+                </div>
+
+                <div class="press-item">
+                    <span class="status-tag tag-upcoming">Product</span>
+                    <a href="#" class="press-title">4. Product Development Progress</a>
+                    <p style="color: var(--muted); margin-top: 15px;">H.E.M has built:</p>
+                    <ul style="margin-top: 16px; color: var(--muted); padding-left: 20px;">
+                        <li>Functional frontend systems (HTML/CSS/JS based platforms)</li>
+                        <li>Newsroom architecture with press-style formatting</li>
+                        <li>Finance dashboard structure</li>
+                        <li>Streaming platform concept design (Cinexa+)</li>
+                        <li>Scalable multi-site structure using subdomains</li>
+                    </ul>
+                </div>
+
+                <div class="press-item">
+                    <span class="status-tag tag-live">Presence</span>
+                    <a href="#" class="press-title">5. Market Presence (Early Stage)</a>
+                    <p style="color: var(--muted); margin-top: 15px;">H.E.M Africa now has:</p>
+                    <ul style="margin-top: 16px; color: var(--muted); padding-left: 20px;">
+                        <li>A public-facing digital footprint</li>
+                        <li>Early audience exposure through live platforms</li>
+                        <li>A growing ecosystem structure that can scale into multiple services</li>
+                    </ul>
+                </div>
+
+                <div class="press-item">
+                    <span class="status-tag tag-live">Expansion</span>
+                    <a href="#" class="press-title">6. Foundation for Expansion</a>
+                    <p style="color: var(--muted); margin-top: 15px;">The current achievements set up H.E.M for:</p>
+                    <ul style="margin-top: 16px; color: var(--muted); padding-left: 20px;">
+                        <li>Mobile app development (future stage)</li>
+                        <li>API integrations</li>
+                        <li>Monetization systems (ads, subscriptions, services)</li>
+                        <li>Expansion into wider African digital markets</li>
+                    </ul>
                 </div>
             </div>
 
@@ -107,3 +185,4 @@
     </script>
 </body>
 </html>
+

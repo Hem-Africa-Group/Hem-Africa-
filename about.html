@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Hem V2 Logo.jpeg" />
+    <title>About H.E.M Africa</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Space+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Core Variables & Reset */
+        :root {
+            --accent: #003399;
+            --deep: #001f5c;
+            --bg-dark: #050b14;
+            --border: #e1e8f0;
+            --text-main: #334155;
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: #ffffff; color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
+
+        /* Loader */
+        #global-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s; }
+        .loader-text { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--accent); font-weight: 700; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* Navigation */
+        .nav { position: sticky; top: 0; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; padding: 1.2rem 2rem; align-items: center; flex-wrap: wrap; }
+        .logo { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; text-decoration: none; color: #000; }
+        .logo span { color: var(--accent); font-weight: 300; }
+        
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #1a1a1b; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Mobile Nav Toggle */
+        .nav-toggle { display: none; border: none; background: transparent; cursor: pointer; width: 30px; height: 24px; flex-direction: column; justify-content: space-between; align-items: center; }
+        .nav-toggle span { display: block; width: 100%; height: 3px; border-radius: 2px; background: #1a1a1b; transition: 0.3s; }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
+
+        /* Simple Header */
+        .simple-header { background: radial-gradient(circle at 50% 0%, #f0f4ff, #ffffff); padding: 100px 2rem 60px; text-align: center; border-bottom: 1px solid var(--border); }
+        .simple-header h1 { font-size: 3.5rem; font-weight: 900; color: var(--deep); letter-spacing: -1px; margin-bottom: 10px; }
+        .simple-header p { font-family: 'Space Mono', monospace; color: var(--accent); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Document / Article Layout for readability */
+        .content-container { max-width: 800px; margin: 0 auto; padding: 60px 2rem 100px; font-size: 1.1rem; }
+        .content-container h2 { font-size: 2rem; color: var(--deep); font-weight: 800; margin: 50px 0 20px; letter-spacing: -0.5px; }
+        .content-container h2:first-child { margin-top: 0; }
+        .content-container p { margin-bottom: 24px; }
+        
+        .content-container ul { margin-bottom: 30px; padding-left: 20px; }
+        .content-container li { margin-bottom: 12px; }
+        .content-container li strong { color: var(--deep); font-weight: 700; }
+
+        .highlight-box { background: #f8fafc; border-left: 4px solid var(--accent); padding: 30px; margin: 40px 0; border-radius: 0 8px 8px 0; }
+        .highlight-box p { margin: 0; font-size: 1.25rem; color: var(--deep); font-weight: 600; line-height: 1.6; }
+
+        .contact-box { background: var(--deep); color: white; padding: 40px; border-radius: 12px; margin-top: 60px; text-align: center; }
+        .contact-box h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+        .contact-box p { color: #e1e8f0; margin-bottom: 20px; }
+        .contact-box a { display: inline-block; color: #fff; text-decoration: none; font-weight: 700; margin: 0 10px; padding: 10px 20px; background: rgba(255,255,255,0.1); border-radius: 6px; transition: 0.3s; }
+        .contact-box a:hover { background: var(--accent); }
+
+        /* Footer */
+        .simple-footer { text-align: center; padding: 40px 2rem; border-top: 1px solid var(--border); font-size: 0.9rem; color: #5f6368; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            .nav-links { position: absolute; top: 100%; left: 0; right: 0; display: none; flex-direction: column; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); padding: 2rem; border-bottom: 1px solid var(--border); text-align: left; align-items: flex-start; }
+            .nav-links.show { display: flex; }
+            .simple-header { padding: 80px 1.5rem 40px; }
+            .simple-header h1 { font-size: 2.5rem; }
+            .content-container { padding: 40px 1.5rem 60px; font-size: 1rem; }
+            .content-container h2 { font-size: 1.7rem; }
+            .highlight-box p { font-size: 1.1rem; }
+            .contact-box a { display: block; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loader -->
+    <div id="global-loader">
+        <div class="loader-text">LOADING H.E.M AFRICA...</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="logo">H.E.M<span>AFRICA</span></a>
+            <button class="nav-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="simple-header">
+        <h1>About H.E.M Africa</h1>
+        <p>Hustle Excellence Movement</p>
+    </header>
+
+    <!-- Main Content (Simple Document Flow) -->
+    <main class="content-container">
+        
+        <p><strong>H.E.M Africa</strong> (Hustle Excellence Movement) is a technology and media company building the future of African digital innovation. We are focused on developing powerful platforms that connect people, deliver information, and unlock new opportunities across the continent.</p>
+
+        <h2>Our Mission</h2>
+        <p>To empower Africa through technology by creating scalable digital ecosystems in media, finance, entertainment, AI, and social platforms.</p>
+        
+        <div class="highlight-box">
+            <p>"We believe Africa is not the future — Africa is the present. H.E.M exists to accelerate that reality."</p>
+        </div>
+
+        <h2>What We Build</h2>
+        <p>H.E.M Africa is an ecosystem of interconnected platforms, including:</p>
+        <ul>
+            <li><strong>H.E.M News</strong> — A modern news platform delivering fast, reliable, and African-focused updates.</li>
+            <li><strong>H.E.M Finance</strong> — A financial intelligence platform designed to improve financial awareness and access.</li>
+            <li><strong>Cinexa+</strong> — A digital entertainment and streaming experience built for African audiences.</li>
+            <li><strong>Pinglo</strong> — A next-generation social platform focused on communication and community.</li>
+        </ul>
+        <p>Each product is designed to work together, creating a unified digital experience.</p>
+
+        <h2>Our Vision</h2>
+        <p>To become one of Africa’s leading technology ecosystems, competing globally while solving local challenges through innovation.</p>
+        <p>We aim to build platforms that are:</p>
+        <ul>
+            <li>Fast and scalable</li>
+            <li>Accessible across Africa</li>
+            <li>Powered by modern AI and cloud infrastructure</li>
+            <li>Designed for the next generation of users</li>
+        </ul>
+
+        <h2>Why H.E.M Exists</h2>
+        <p>Africa is full of talent, creativity, and opportunity — but often lacks the digital infrastructure to support it at scale. H.E.M Africa exists to change that by building tools that help people:</p>
+        <ul>
+            <li>Stay informed</li>
+            <li>Grow financially</li>
+            <li>Connect socially</li>
+            <li>Access entertainment</li>
+            <li>And create digital opportunities</li>
+        </ul>
+
+        <h2>Our Future</h2>
+        <p>We are just getting started. H.E.M Africa is continuously expanding its ecosystem with new platforms, tools, and partnerships aimed at reshaping how Africans interact with technology.</p>
+
+        <!-- Contact Call to Action -->
+        <div class="contact-box">
+            <h3>Get in Touch</h3>
+            <p>For partnerships, collaborations, or general inquiries.</p>
+            <a href="mailto:contact@hemafrica.com">📧 contact@hemafrica.com</a>
+            <a href="https://hemafrica.com" target="_blank">🌐 hemafrica.com</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="simple-footer">
+        &copy; 2026 H.E.M Africa. All Rights Reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Loader
+            const loader = document.getElementById("global-loader");
+            setTimeout(() => {
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 500);
+            }, 600);
+
+            // Mobile Menu
+            const menuBtn = document.getElementById("mobile-menu-btn");
+            const navMenu = document.getElementById("nav-menu");
+            
+            menuBtn.addEventListener("click", () => {
+                menuBtn.classList.toggle("open");
+                navMenu.classList.toggle("show");
+            });
+        });
+    </script>
+</body>
+</html>
+
