@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partnerships | H.E.M. Africa Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+        
+        :root {
+            --accent: #003399;
+            --gold: #D4AF37;
+            --deep: #001f5c;
+            --bg-dark: #050b14;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #191997; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border: 1px solid #e1e8f0; }
+        .bg-gradient-hero { background: radial-gradient(circle at 70% 30%, #f0f4ff, #ffffff); }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+    </style>
+</head>
+
+<body>
+
+    <section class="bg-gradient-hero py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-gold font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Building Africa's Future Together</span>
+            <h1 class="text-5xl md:text-7xl font-black text-[#001f5c] mb-8 leading-[1.1]">Partner with H.E.M. Africa</h1>
+            <p class="text-xl text-[#5f6368] mb-10">Shape the next generation of technology, media, education, and innovation across the continent.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="inquiry.html" class="px-8 py-4 bg-[#003399] text-white font-bold rounded-full hover:bg-[#001f5c] transition-all">Become a Partner</a>
+                <a href="#" class="px-8 py-4 border border-[#e1e8f0] font-bold rounded-full hover:bg-slate-50 transition-all">Download Deck</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16 text-[#001f5c]">Why Organizations Choose H.E.M.</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-3xl border border-[#e1e8f0] hover:shadow-2xl transition-all">
+                <i data-lucide="globe" class="text-[#003399] mb-6 w-8 h-8"></i>
+                <h3 class="text-xl font-bold mb-4">Pan-African Vision</h3>
+                <p class="text-[#64748b]">Scale your influence across a rapidly growing, diverse digital market.</p>
+            </div>
+            <div class="p-8 rounded-3xl border border-[#e1e8f0] hover:shadow-2xl transition-all">
+                <i data-lucide="users" class="text-[#003399] mb-6 w-8 h-8"></i>
+                <h3 class="text-xl font-bold mb-4">Youth Audience</h3>
+                <p class="text-[#64748b]">Direct access to Africa's largest demographic of digital-first consumers.</p>
+            </div>
+            <div class="p-8 rounded-3xl border border-[#e1e8f0] hover:shadow-2xl transition-all">
+                <i data-lucide="zap" class="text-[#003399] mb-6 w-8 h-8"></i>
+                <h3 class="text-xl font-bold mb-4">Innovation-Driven</h3>
+                <p class="text-[#64748b]">Collaborate with an ecosystem leveraging AI, Cloud, and Fintech.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry" class="py-20 bg-[#f8fafc] border-t border-[#e1e8f0]">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-center">Start the Conversation</h2>
+            <form class="grid md:grid-cols-2 gap-6 bg-white p-10 rounded-3xl border border-[#e1e8f0] shadow-sm">
+                <input type="text" placeholder="Full Name" class="w-full p-4 rounded-xl border border-[#e1e8f0] outline-none focus:border-[#003399]">
+                <input type="text" placeholder="Organization" class="w-full p-4 rounded-xl border border-[#e1e8f0] outline-none focus:border-[#003399]">
+                <input type="email" placeholder="Business Email" class="col-span-full w-full p-4 rounded-xl border border-[#e1e8f0] outline-none focus:border-[#003399]">
+                <select class="col-span-full w-full p-4 rounded-xl border border-[#e1e8f0] outline-none text-[#5f6368]">
+                    <option>Strategic Partnership</option>
+                    <option>Tech Integration</option>
+                    <option>Investment Inquiry</option>
+                </select>
+                <textarea placeholder="Tell us about your goals..." class="col-span-full w-full p-4 rounded-xl border border-[#e1e8f0] h-32 outline-none focus:border-[#003399]"></textarea>
+                <button class="col-span-full w-full py-4 bg-[#003399] text-white font-bold rounded-xl hover:bg-[#001f5c] transition-all">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
