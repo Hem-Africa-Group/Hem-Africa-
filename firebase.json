@@ -5,6 +5,9 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "redirects": [
+      { "source": "/status", "destination": "/status.html", "type": 302 }
     ]
   }
 }
