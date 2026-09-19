@@ -1,6 +1,6 @@
-.hem-public-popup{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px;background:rgba(2,8,23,.76);backdrop-filter:blur(8px) saturate(115%);overflow:hidden}
-.hem-popup-frame{width:min(920px,96vw);height:min(720px,90vh);border:0;border-radius:22px;background:#fff;box-shadow:0 35px 100px rgba(0,0,0,.45);overflow:hidden}
-.hem-public-popup.has-inner-overlay{padding:0;background:transparent;backdrop-filter:none}
+.hem-public-popup{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:16px;background:#020b1d;overflow:hidden}
+.hem-popup-frame{display:block;width:min(560px,96vw);height:min(600px,86vh);border:0;border-radius:22px;background:#fff;box-shadow:0 28px 80px rgba(0,0,0,.42);overflow:hidden}
+.hem-public-popup.has-inner-overlay{padding:0;background:transparent}
 .hem-public-popup.has-inner-overlay .hem-popup-frame{width:100vw;height:100vh;max-width:none;max-height:none;border-radius:0;background:transparent;box-shadow:none}
 .hem-popup-close{position:fixed;top:14px;right:16px;z-index:2;width:40px;height:40px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:25px;line-height:1;cursor:pointer}
 #hem-public-control{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top,#0d1d3f,#02060d 65%);color:#fff}
