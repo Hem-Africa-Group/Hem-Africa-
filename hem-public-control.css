@@ -1,0 +1,20 @@
+.hem-public-popup{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:18px;background:rgba(2,8,23,.62);backdrop-filter:blur(14px)}
+.hem-popup-frame{width:min(920px,96vw);height:min(720px,90vh);border:0;border-radius:22px;background:transparent;box-shadow:0 35px 100px rgba(0,0,0,.45)}
+.hem-popup-close{position:fixed;top:14px;right:16px;z-index:2;width:40px;height:40px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:25px;line-height:1;cursor:pointer}
+#hem-public-control{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top,#0d1d3f,#02060d 65%);color:#fff}
+.hem-control-card{width:min(760px,94vw);padding:42px;border:1px solid rgba(255,255,255,.13);border-radius:26px;background:rgba(255,255,255,.06);box-shadow:0 40px 100px rgba(0,0,0,.4);backdrop-filter:blur(18px)}
+.hem-control-mark{font:800 12px/1 Inter,sans-serif;letter-spacing:2px;color:#8fb4ff;margin-bottom:25px}
+.hem-control-label{display:inline-block;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.09);color:#b8c8df;font:800 10px/1 Inter,sans-serif;letter-spacing:1.2px;text-transform:uppercase}
+.hem-control-card h1{margin:20px 0 12px;font:800 clamp(30px,5vw,58px)/1.04 Inter,sans-serif;letter-spacing:-1.8px}
+.hem-control-card p{margin:0;max-width:650px;color:#c8d3e3;font:400 16px/1.7 Inter,sans-serif}
+.hem-control-details{margin-top:20px;padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:14px;color:#aebdd0;font:400 13px/1.65 Inter,sans-serif;white-space:pre-wrap}
+.hem-control-card a{display:inline-flex;margin-top:22px;padding:11px 15px;border-radius:10px;background:#fff;color:#07142e;text-decoration:none;font:800 13px Inter,sans-serif}
+.hem-status-live{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px;padding:24px;border:1px solid #dbe4ef;border-radius:16px;background:#fff;box-shadow:0 18px 40px rgba(0,31,92,.06)}
+.hem-status-dot{width:12px;height:12px;flex:none;margin-top:5px;border-radius:50%;background:#00c853;box-shadow:0 0 0 5px rgba(0,200,83,.1)}
+.hem-status-dot.attention{background:#ffb300;box-shadow:0 0 0 5px rgba(255,179,0,.12)}
+.hem-status-live b{font:800 10px Inter,sans-serif;letter-spacing:1.2px;color:#003399}
+.hem-status-live h2{margin:7px 0;color:#001f5c;font-size:26px}
+.hem-status-live p{margin:0;color:#55657a;line-height:1.6}
+.hem-status-details{margin-top:12px;padding:12px;border-radius:10px;background:#f6f8fc;color:#526278;white-space:pre-wrap}
+.hem-status-live small{display:block;margin-top:12px;color:#95a1b1}
+@media(max-width:600px){.hem-popup-frame{width:100%;height:min(760px,92vh);border-radius:16px}.hem-public-popup{padding:10px}.hem-control-card{padding:28px 22px;border-radius:20px}.hem-control-card p{font-size:14px}.hem-control-card h1{font-size:35px}.hem-status-live{padding:18px}}
