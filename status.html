@@ -1,61 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./Hem V2 Logo.jpeg" />
-    <title>System Status | H.E.M. Africa Group</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --accent: #003399; --deep: #001f5c; --success: #00c853; --border: #e1e8f0; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: #f8fafc; color: #1a1a1b; padding: 40px 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header { margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
-        .status-hero { background: #fff; padding: 30px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
-        .pulse { width: 12px; height: 12px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 0 rgba(0, 200, 83, 0.4); animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 200, 83, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(0, 200, 83, 0); } 100% { box-shadow: 0 0 0 0px rgba(0, 200, 83, 0); } }
-        .service-list { background: #fff; border: 1px solid var(--border); }
-        .service-item { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-        .service-item:last-child { border-bottom: none; }
-        .service-name { font-weight: 700; font-size: 0.9rem; color: var(--deep); }
-        .uptime { font-size: 0.75rem; color: #94a3b8; }
-        .status-label { font-size: 0.7rem; font-weight: 800; color: var(--success); text-transform: uppercase; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#001f5c">
+<title>System Status | H.E.M. Africa Group</title>
+<link rel="icon" href="./Hem V2 Logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#091426}
+body{min-height:100vh}
+</style>
+<script src="/hem-public-control.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 style="font-weight: 800; color: var(--deep);">Network Status</h1>
-            <p style="color: #64748b;">Live monitoring of H.E.M. global infrastructure.</p>
-        </div>
-        <div id="hem-live-status"></div>
-        <div class="status-hero">
-            <div>
-                <span class="status-label">Global Status</span>
-                <h2 style="margin-top: 5px;">All Systems Operational</h2>
-            </div>
-            <div class="pulse"></div>
-        </div>
-      <div class="service-list">
-    <div class="service-item">
-        <div><p class="service-name">H.E.M. Core SSO</p><p class="uptime">Live Node: Lagos/NY</p></div>
-        <span class="status-label" style="color: var(--success);">Operational</span>
-    </div>
-    <div class="service-item">
-        <div><p class="service-name">Pinglo Social Media</p><p class="uptime">Private and secure Messaging</p></div>
-        <span class="status-label" style="color: #ffd600;">In Development</span>
-    </div>
-
-    <div class="service-item">
-        <div><p class="service-name">Cinexa Plus V1.3</p><p class="uptime">Live Node :Lagos/NY</p></div>
-        <span class="status-label" style="color: #09e247;">Operational</span>
-    </div>
+<div id="hem-live-status">
+<section class="hem-status-shell">
+<div class="hem-status-kicker">HEM AFRICA GROUP · LIVE OPERATIONS</div>
+<h1>System Status</h1>
+<p>Checking current HEM service reachability and active public-service controls…</p>
+<div class="hem-status-grid"><div class="hem-status-loading">Checking live services…</div></div>
+</section>
 </div>
-            </div>
-        </div>
-    </div>
-<script src="/hem-public-control-v2.js"></script>
 </body>
 </html>
-
